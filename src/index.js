@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Home from './views/home';
+import './css/style.css';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <React.Fragment>
+    <Home />
+  </React.Fragment>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+// 1 - Instalar react
+// 2 - Limpar o react (cleanup)
+// 3 - Criar view (qualquer conteudo)
+// 4 - Criar o Layout (component que recebe um parametro)
+// 5 - Criar um estado local (React.useState)
+// 6 - Execute um ação para mudar

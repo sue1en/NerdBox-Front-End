@@ -1,0 +1,40 @@
+Projeto 2
+
+-->> Clube de assinatura nerd <<--
+
+    -> Descrição:
+
+    -> Dados Técnicos:
+
+    -> NOME: (?)
+
+->> KITs 
+
+    -> Kit 1 - Kit Leitura:
+        - Livros
+        - HQs e Mangá
+        - Revista
+
+    -> Kit 2 - Kit Toy:
+        - Action Figure
+        - Miniatura
+        - Funko Pop
+
+    -> Kit 3 - Kit (nome):
+        - Caneca
+        - Copo
+        - Porta Copo
+        - Garrafa
+
+    -> Kit 4 - Kit (nome):
+        - Broche
+        - Adesivo
+        - Chaveiros
+        - Poster
+        - Placas
+
+    -> Kit 5 - Kit (nome):
+        - Bone
+        - Gorro
+        - Pulseira
+        - Cordão

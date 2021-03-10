@@ -9,7 +9,7 @@ import {
 import Produtos from './views/produtos';
 
 // componentes basicos
-import Layout from '.././components/layout';
+import Layout from './components/layout';
 
 
 const Routers = () => {

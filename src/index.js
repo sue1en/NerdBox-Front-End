@@ -6,11 +6,7 @@ import Routers from './routers';
 
 ReactDOM.render(
   <React.Fragment>
-    <Layout>
       <Routers/>
-      {/* <Teste/> */}
-    </Layout>
   </React.Fragment>,
   document.getElementById('root') 
-  // Rever isso -> document.getElementById('root')
 );

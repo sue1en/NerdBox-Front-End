@@ -1,7 +1,5 @@
 import React from 'react';
-import Axios from 'axios';
-const urlApi = '#';
-
+import { getServiceProdutos } from '../services/produto.service';
 
 const Produtos = () => {
     /* 
@@ -24,7 +22,7 @@ const Produtos = () => {
 
     React.useEffect(()=>{
         const getProdutos = async () => {
-            const res = await Axios.get(urlApi);
+            const res = await getServiceProdutos();
             setProdutos(res.data);
         };
         getProdutos();
@@ -37,7 +35,7 @@ const Produtos = () => {
             <h3>Olá Mundo</h3>
             <ul>
                 {produtos.map(item => {
-                    <li key={item.id}>{item.id} - {item.descricao}</li>
+                    <li key={item.id}>{item.id}</li>
                 })}
             </ul>
         </div>
@@ -49,7 +47,7 @@ const Produtos = () => {
             <button onClick={() => setName(teste + 1)}> adiciona 1 </button>
             </div> 
         */
-      );
+    );
 };
 
 export default Produtos;

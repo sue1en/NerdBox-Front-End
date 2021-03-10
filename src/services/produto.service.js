@@ -1,7 +1,6 @@
-import http from '../config/http';
+import http from '../config/http.js';
 
 const getServiceProdutos = () => http.get('/product');
-
 // exemplo
 // const createServiceCurso = (data) => http.post('/curso/create', data);
 

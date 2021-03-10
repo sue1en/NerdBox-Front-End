@@ -4,7 +4,6 @@ import {
     Switch,
     Route
 } from 'react-router-dom';
-
 //Views
 import Produtos from './views/produtos';
 

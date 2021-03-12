@@ -14,8 +14,8 @@ const Produtos = () => {
             try {
                 const res = await getServiceProdutos();
                 setProdutos(res.data)
-            } catch(err) {
-                console.log("##", err , "##" );
+            } catch(error) {
+                console.log("##", error , "##" );
             }
         }, []
     );
@@ -27,14 +27,41 @@ const Produtos = () => {
 
     return(
         <div className ='Produtos'>
-            <h3>Olá Mundo</h3>
-            <hr/>
-            <ul>
-                {produtos.map(item => (
-                    <li key={item.id}> {item.category} </li>
-                ))}
-            </ul>
-            <hr/>
+            <div className='Introduction'>
+                <h3>Olá Mundo</h3>
+            </div>
+            <div className='Review'>
+                <div className='ReviewBox'>
+                    <div className='ReviewText'>
+                        <h3>Mussum Cacilds</h3>
+                        <p>Mussum Ipsum, cacilds vidis litro abertis. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Suco de cevadiss deixa as pessoas mais interessantis.</p>
+                    </div>
+                    <div className='ReviewImage'>
+                        <h3>IMG</h3>
+                    </div>
+                </div>
+                <div className='ReviewBox'>
+                    <div className='ReviewText'>
+                        <h3>Mussum Cacilds</h3>
+                        <p>Mussum Ipsum, cacilds vidis litro abertis. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Suco de cevadiss deixa as pessoas mais interessantis.</p>
+                    </div>
+                    <div className='ReviewImage'>
+                        <h3>IMG</h3>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <ul className='ProductsContainer'>
+                    {produtos.map(item => (
+                        <li key={item.id}> 
+                            <p className='ProductBoxName'>{item.category}</p> 
+                            <p className='ProductBoxDescription'>{item.description}</p>
+                            <p className='ProductBoxPrice'>R$ {item.price}</p>
+                        </li>
+                    ))}
+                </ul>
+                <button> Inscreva-se</button>
+            </div>
         </div> 
     );
 };

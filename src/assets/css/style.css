@@ -1,0 +1,122 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: Verdana;
+    background: #444444;
+}
+
+/* ______________HEADER______________ */
+header{
+    background: #ddd;
+}
+
+header h1{
+    padding: 20px;
+    margin:0;
+    text-align: center;
+}
+header .NavBar{
+    background:#dbdbdb;
+    display: flex;
+    margin:0;
+    padding:0;
+    width: 100vw;
+    justify-content: center;
+}
+header .NavBar li{
+    list-style: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+header .NavBar li a{
+    text-decoration: none;
+    color:#35576d;;
+}
+/* ______________FOOTER______________ */
+footer{
+    background: #ddd;
+    padding: 20px;
+}
+footer p{
+    font-weight: bold;
+}
+
+/* ______________MAIN______________ */
+
+.Introduction{
+    background: #35576d;
+    text-align: center;
+    padding:80px;
+}
+.Review{
+    display: flex;
+    justify-content: space-evenly;
+}
+.ReviewBox{
+    background: #7a7a7a;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 50px 20px;
+    padding: 20px 20px 20px 40px;
+    border-radius: 80px;
+}
+.ReviewText{
+    max-width: 270px;
+
+}
+.ReviewText h3, p{
+    margin:0;
+}
+.ReviewImage{
+    width: 120px;
+    height: 120px;
+    background: #ccc;
+    text-align: center;
+    border-radius: 60px;
+    margin-left: 10px;
+}
+main .Produtos{
+    /* padding: 20px; */
+}
+.ProductsContainer{
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.ProductsContainer li{
+    background:#dbdbdb;
+    list-style: none;
+    width: 180px;
+    display:flex;
+    flex-direction: column;
+}
+.ProductBoxName{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+    align-self: center;
+    padding: 15px;
+}
+.ProductBoxDescription{
+    text-indent: 10px;
+    word-wrap: break-word;
+    margin: 0;
+    padding: 15px;
+    flex-grow: 2;
+}
+.ProductBoxPrice{
+    font-weight: bold;
+    color:#ff7b00;
+    margin: 0;
+    padding: 10px 15px;
+    align-self:flex-end;
+
+}
+
+.Produtos button{
+    padding: 15px 150px;
+    margin: 30px 20px;
+}

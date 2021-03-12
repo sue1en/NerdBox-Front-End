@@ -1,6 +1,6 @@
 const Footer = () => (
         <footer>
-            <p>Rodapé</p>
+            <p>Todos os direitos reservados ao Rodapé</p>
         </footer>
 );
 

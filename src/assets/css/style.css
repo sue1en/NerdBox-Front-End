@@ -78,7 +78,7 @@ footer p{
     border-radius: 60px;
     margin-left: 10px;
 }
-main .Produtos{
+main .Home{
     /* padding: 20px; */
 }
 .ProductsContainer{
@@ -113,10 +113,8 @@ main .Produtos{
     margin: 0;
     padding: 10px 15px;
     align-self:flex-end;
-
 }
-
-.Produtos button{
+.Home button{
     padding: 15px 150px;
     margin: 30px 20px;
 }

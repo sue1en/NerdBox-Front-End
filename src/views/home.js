@@ -1,8 +1,23 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import { getServiceProdutos } from '../services/produto.service.js';
+import { getServiceAllBoxes } from '../services/boxes.service.js';
 
-const Produtos = () => {
-    
+const Home = () => {
+
+    const [boxes, setBoxes] = React.useState([]);
+
+    const getBoxes = useCallback(
+        async () => {
+            const res = await getServiceAllBoxes();
+            setBoxes(res.data);
+        }
+    );
+
+    useEffect(()=>{
+        getBoxes();
+    },[]
+    );
+
     const [produtos, setProdutos] = useState([]);
     /* 
     Função auto executável(()=>{})().
@@ -26,7 +41,7 @@ const Produtos = () => {
     );
 
     return(
-        <div className ='Produtos'>
+        <div className ='Home'>
             <div className='Introduction'>
                 <h3>Olá Mundo</h3>
             </div>
@@ -52,10 +67,14 @@ const Produtos = () => {
             </div>
             <div>
                 <ul className='ProductsContainer'>
-                    {produtos.map(item => (
+                    {boxes.map(item => (
                         <li key={item.id}> 
-                            <p className='ProductBoxName'>{item.category}</p> 
-                            <p className='ProductBoxDescription'>{item.description}</p>
+                            <p className='ProductBoxName'>{item.nome}</p> 
+                            <ul>
+                                {produtos.map(item =>(
+                                <li key={item.id} className='ProductBoxDescription'>{item.category}</li>
+                                ))}
+                            </ul>
                             <p className='ProductBoxPrice'>R$ {item.price}</p>
                         </li>
                     ))}
@@ -66,7 +85,7 @@ const Produtos = () => {
     );
 };
         
-export default Produtos;
+export default Home;
 
 /*  
     Teste do useState

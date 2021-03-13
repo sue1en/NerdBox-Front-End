@@ -1,4 +1,4 @@
-import http from '../config/http.js';
+import http from '../config/http';
 
 const getServiceProdutos = () => http.get('/product');
 // exemplo

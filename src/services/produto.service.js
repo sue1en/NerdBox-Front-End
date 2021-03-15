@@ -1,9 +1,11 @@
 import http from '../config/http';
 
-const getServiceProdutos = () => http.get('/product');
+const getServiceAllProdutos = () => http.get('/product');
+// const getServiceProdutos = (id) => http.get(`/product/${id}`);
 // exemplo
 // const createServiceCurso = (data) => http.post('/curso/create', data);
 
 export {
-    getServiceProdutos
+    getServiceAllProdutos,
+    // getServiceProdutos
 }

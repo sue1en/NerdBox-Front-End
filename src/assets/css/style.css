@@ -8,6 +8,8 @@ body{
 /* ______________HEADER______________ */
 header{
     background: #ddd;
+    display: flex;
+    align-items: center;
 }
 
 header h1{
@@ -42,18 +44,21 @@ footer p{
     font-weight: bold;
 }
 
-/* ______________MAIN______________ */
+/* ______________MAIN/ home______________ */
 
+main .Home{
+    /* padding: 20px; */
+}
 .Introduction{
     background: #35576d;
     text-align: center;
     padding:80px;
 }
-.Review{
+#ReviewContainer{
     display: flex;
     justify-content: space-evenly;
 }
-.ReviewBox{
+.ReviewCard{
     background: #7a7a7a;
     display:flex;
     align-items: center;
@@ -78,43 +83,135 @@ footer p{
     border-radius: 60px;
     margin-left: 10px;
 }
-main .Home{
-    /* padding: 20px; */
-}
-.ProductsContainer{
-    padding: 10px;
+#ProductsContainer{
     display: flex;
+    flex-direction: column;
+ 
+}
+#ProductsContainer ul{
+    display: flex;
+    padding: 10px;
     justify-content: space-evenly;
 }
-.ProductsContainer li{
-    background:#dbdbdb;
+
+#ProductsContainer ul li{
+    background:#eee;
     list-style: none;
-    width: 180px;
-    display:flex;
-    flex-direction: column;
+    border: 2px solid #000;
+    border-radius: 20px;
+    width: 350px;
+    margin: 7px;
+    text-decoration: none;
 }
-.ProductBoxName{
+.ProductImage{
+    background: #444;
+    height:200px;
+    margin:15px;
+}
+.ProductTitle{
     text-transform: uppercase;
     font-weight: bold;
     margin: 0;
-    align-self: center;
+    text-align: center;
     padding: 15px;
+    font-size: 18px;
 }
-.ProductBoxDescription{
-    text-indent: 10px;
+.ProductDescription{
+    text-indent: 12px;
     word-wrap: break-word;
     margin: 0;
     padding: 15px;
     flex-grow: 2;
 }
-.ProductBoxPrice{
+.ProductPrice{
     font-weight: bold;
     color:#ff7b00;
     margin: 0;
     padding: 10px 15px;
-    align-self:flex-end;
 }
-.Home button{
-    padding: 15px 150px;
-    margin: 30px 20px;
+
+/* ______________MAIN inscricão______________ */
+
+.Inscricao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ProductBoxContainer{
+    height:300px;
+    width: 80vw;
+    background-color: #eee;
+    border-radius: 20px;
+    margin:20px;
+    padding:20px
+}
+.ProductBoxContainer h2{
+    margin: 0;
+    text-align: center;
+}
+.ProductBoxElements{
+    display: flex;
+    justify-content: space-between;
+}
+.ProductBoxElements h3{
+    background:#444;
+    width:160%;
+    height: 250px;
+    margin: 10px 10px 10px 0;
+    text-align: center;
+}
+.ProductBoxElements p{
+    margin: 10px 0 10px 10px;
+}
+.SubscribeContainer{
+    display: flex;
+    height:300px;
+    width: 80vw;
+    padding:20px;
+    justify-content: space-between;
+}
+.SubscribeEntrieBox{
+    background-color: #eee;
+    border-radius: 20px;
+    margin:15px;
+    padding:20px;
+    width: 100%;
+}
+.SubscribeEntrieBox form{
+    display:flex;
+    flex-direction: column;
+}
+.SubscribeEntrieBox button{
+    border: none;
+    padding: 5px;
+    background-color: #ff7b00;
+}
+form .FormElement{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+form .FormElement label{
+    text-transform: uppercase;
+}
+form .FormElement input{
+    margin-left: 10px;
+    padding:2px;
+    flex-grow: 1;
+}
+.MembersContainer{
+    height:250px;
+    width: 80vw;
+    background-color: #eee;
+    border-radius: 20px;
+    margin:30px;
+    padding:20px
+}
+/* ______________MAIN SOBRE______________ */
+.SobreContainer{
+    background-color: #ccc;
+    text-align: center;
+    margin: 30px;
+    padding: 30px;
 }

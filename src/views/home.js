@@ -1,45 +1,29 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
-import { getServiceAllProdutos } from '../services/produto.service.js';
+import React, {useCallback, useEffect, useState } from 'react';
 import { getServiceAllBoxes } from '../services/boxes.service.js';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
+    
+    const [boxes, setBoxes] = useState([]);
+    const [hasError, setError] = useState(false);
+    
+    const getBoxes = useCallback(() => {
+        getServiceAllBoxes()
+            .then(res => setBoxes(res.data))
+            .catch(error => setError(true))
+    }, []);
 
-    const [boxes, setBoxes] = React.useState([]);
-
-    const getBoxes = useCallback(
-        async () => {
-            const res = await getServiceAllBoxes();
-            setBoxes(res.data);
-        }
-    );
 
     useEffect(()=>{
         getBoxes();
-    },[]
+    },[getBoxes]
     );
 
-    const [produtos, setProdutos] = React.useState([]);
-    const getProduto = React.useCallback(
-        async () => {
-            try {
-                const res = await getServiceAllProdutos();
-                setProdutos(res.data)
-            } catch(error) {
-                console.log("##", error , "##" );
-            }
-        }, []
-        );
-        
-        React.useEffect(()=>{
-            getProduto();
-        },[]
-        );
 
-        return(
-            <div className ='Home'>
+    return(
+        <div className ='Home'>
             <div className='Introduction'>
-                <h3>Olá Mundo</h3>
+            <h3>Olá Mundo</h3>
             </div>
             <div id='ReviewContainer'>
                 <div className='ReviewCard'>
@@ -62,19 +46,20 @@ const Home = () => {
                 </div>
             </div>
             <div id='ProductsContainer'>
-                <ul>
-                    {boxes.map(item => (
-                        <li key={item.id}> 
-                            <Link to={`/inscricao/${item.id}`}>
-                                <h4 className='ProductImage'>IMAGEM</h4>
-                                {/* <p className='ProductName'>{item.name}</p>  */}
-                                <p className='ProductTitle'>PACOTE</p>
-                                <p className='ProductDescription'>{item.description}</p>
-                                <p className='ProductPrice'>R$ {item.price}</p>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                { hasError ? (<div>TEMOS UM ERRO!!!</div>) 
+                : ( 
+                    <ul>
+                        {boxes.map(item => (
+                            <li key={item.id}> 
+                                <Link to={`/inscricao/${item.id}`}>
+                                    <h4 className='ProductImage'>IMAGEM</h4>
+                                    <p className='ProductTitle'>{item.name}</p>
+                                    <p className='ProductPrice'>R$ {item.price}</p>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </div>
         </div> 
     );

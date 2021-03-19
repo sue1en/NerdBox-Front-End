@@ -1,66 +1,70 @@
-import React from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router';
-import { getServiceBoxDetalhe } from '../services/boxes.service'
+import { getServiceBoxDetalhe } from '../services/boxes.service.js'
+import Inscricao from '../components/inscricao';
+import MembersTable from '../components/tabela';
+import Loading_component from '../components/loading'
 
-
-const Inscricao = () => {
+const SubscribePage = () => {
     const { id } = useParams();
-    const [BoxDetalhe, setBoxDetalhe] = React.useState({});
-    const getBoxDetalhe = React.useCallback(
-        async () => {
+
+    const [boxDetalhe, setBoxDetalhe] = useState({box : {}, user : []});
+    const [loading, setLoading] = useState(false);
+    const [hasError, setError] = useState(false);
+
+    const getBoxDetalhe = useCallback(async () => {
+        try {
+            setLoading(true);
             const res = await getServiceBoxDetalhe(id);
-            setBoxDetalhe(res.data)
+            setTimeout(() => {
+                setBoxDetalhe(res.data);
+                setLoading(false);
+            }, 500)
+            } catch (error) {
+                console.log("##", error, "##")
+                setError(true)
+            }
         }, [id]
-        );   
-        React.useEffect(()=>{
-            getBoxDetalhe();
-        },[]
-        );
+    );
+
+    useEffect(()=>{
+        getBoxDetalhe();
+    },[getBoxDetalhe]
+    );
+
+    const printBoxDetalhe = (boxDetalhe) => {
+        console.log(boxDetalhe)
+        return(
+        <div className='ProductBoxContainer'>
+            <h2>{boxDetalhe.name || ''}</h2>
+            <div className='ProductBoxElements'>
+                <h3>Uma imagem entra aqui</h3>
+                <div>
+                    <p>Descrição:</p>
+                    <p>{boxDetalhe.description || ''}</p>
+                </div>
+            </div>
+        </div>
+    )};
 
     return(
     <div className='Inscricao'>
-        <div className='ProductBoxContainer'>
-            <h2>Produto {BoxDetalhe.id}</h2>
-            <div className='ProductBoxElements'>
-                <h3>Uma imagem entra aqui</h3>
-                <p>Descrição: {BoxDetalhe.description}</p>
-            </div>
-        </div>
+        {/* {hasError ? (
+            <div>TEMOS UM ERRO!!!</div>
+        ) : printBoxDetalhe(boxDetalhe)} */}
+
+        { loading ? <Loading_component/> : printBoxDetalhe(boxDetalhe.box)}
+
         <div className='SubscribeContainer'>
             <div className='SubscribeEntrieBox'>
-                <h2>Aqui é cadastrado</h2>
-                <form>
-                    <div className='FormElement'>
-                        <label for='nome'>Nome:</label>
-                        <input type='text' name='nome'></input>
-                    </div>
-                    <button>Cadastrar</button>
-                </form>
-            </div>
-            <div className='SubscribeEntrieBox'>
-                <h2>Aqui é pra cadastrar</h2>
-                <form>
-                    <div className='FormElement'>
-                        <label for='nome'>Nome:</label>
-                        <input type='text' name='nome'></input>
-                    </div>
-                    <div className='FormElement'>
-                        <label for='email'>Email:</label>
-                        <input type='text' name='email'></input>
-                    </div>
-                    <div className='FormElement'>
-                        <label for='Nascimento'>Data de Nascimento:</label>
-                        <input type='date' name='Nascimento'></input>
-                    </div>
-                    <button>Cadastrar</button>
-                </form>
+                <Inscricao/>
             </div>
         </div>
         <div className='MembersContainer'>
-            <h2>Aqui vai ter a lista de inscritos</h2>
+            <MembersTable membros={boxDetalhe.user}/>
         </div>
     </div>
-    )
+    );
 };
 
-export default Inscricao;
+export default SubscribePage;

@@ -53,6 +53,7 @@ main .Home{
     background: #35576d;
     text-align: center;
     padding:80px;
+    height: 150px;
 }
 #ReviewContainer{
     display: flex;

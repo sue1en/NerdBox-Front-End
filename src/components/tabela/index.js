@@ -1,7 +1,7 @@
 const Tabela = ({ membros }) => {
     return(
         <div>
-            <table border="1">
+            <table border="1" width="100%">
                 <thead>
                     <tr>
                         <th>Nome:</th>

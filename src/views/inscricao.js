@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { getServiceBoxDetalhe } from '../services/boxes.service.js'
-import Inscricao from '../components/inscricao';
+import NovaInscricao from '../components/inscricao';
 import MembersTable from '../components/tabela';
 import Loading_component from '../components/loading'
 
@@ -57,7 +57,7 @@ const SubscribePage = () => {
 
         <div className='SubscribeContainer'>
             <div className='SubscribeEntrieBox'>
-                <Inscricao/>
+                <NovaInscricao id={id} />
             </div>
         </div>
         <div className='MembersContainer'>

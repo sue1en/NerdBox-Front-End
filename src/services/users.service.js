@@ -1,9 +1,10 @@
 import http from '../config/http';
 
-const getServiceUser = () => http.get(`/users`);
-const getServiceBoxUser = () => http.get(`/users`);
+const createServiceSubscription = (id, data) => http.post(`boxes/${id}/subscription`, data);
+const createServiceUsers = (data) => http.post(`/account`, data);
+
 
 export {
-    getServiceUser,
-    getServiceBoxUser
+    createServiceSubscription,
+    createServiceUsers
 };

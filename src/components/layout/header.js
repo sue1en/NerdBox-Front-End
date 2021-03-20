@@ -1,7 +1,12 @@
+import NerdBoxLogo from '../../assets/images/logo-01.png'
+
+
 const Header = ()=>{
     return(
         <header>
-            <h1>Titulo</h1>
+            <div className='HeaderLogo'>
+                <img src={NerdBoxLogo} alt="Nerd Box Logo"/>
+            </div>
             <ul className='NavBar'>
                 <li><a href="/">Home</a></li>
                 <li><a href="/#ReviewContainer">Depoimentos</a></li>

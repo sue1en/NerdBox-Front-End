@@ -1,15 +1,16 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { getServiceBoxDetalhe } from '../services/boxes.service.js'
-import NovaInscricao from '../components/inscricao';
-import MembersTable from '../components/tabela';
+import Subscription from '../components/subscription';
+import MembersTable from '../components/table';
 import Loading_component from '../components/loading'
 
-const SubscribePage = () => {
+const BoxesPage = () => {
     const { id } = useParams();
 
     const [boxDetalhe, setBoxDetalhe] = useState({box : {}, user : []});
     const [loading, setLoading] = useState(false);
+    const [update, setUpdate] = useState(false);
     const [hasError, setError] = useState(false);
 
     const getBoxDetalhe = useCallback(async () => {
@@ -28,8 +29,9 @@ const SubscribePage = () => {
     );
 
     useEffect(()=>{
-        getBoxDetalhe();
-    },[getBoxDetalhe]
+        getBoxDetalhe()
+        setUpdate(false)
+    },[getBoxDetalhe, update]
     );
 
     const printBoxDetalhe = (boxDetalhe) => {
@@ -48,23 +50,16 @@ const SubscribePage = () => {
     )};
 
     return(
-    <div className='Inscricao'>
-        {/* {hasError ? (
-            <div>TEMOS UM ERRO!!!</div>
-        ) : printBoxDetalhe(boxDetalhe)} */}
+        <div className='Inscricao'>
+            {/* {hasError ? (
+                <div>TEMOS UM ERRO!!!</div>
+            ) : printBoxDetalhe(boxDetalhe)} */}
 
-        { loading ? <Loading_component/> : printBoxDetalhe(boxDetalhe.box)}
-
-        <div className='SubscribeContainer'>
-            <div className='SubscribeEntrieBox'>
-                <NovaInscricao id={id} />
-            </div>
+            { loading ? <Loading_component/> : printBoxDetalhe(boxDetalhe.box)}
+            <Subscription id={id} update={setUpdate}/>
+            <MembersTable membros={boxDetalhe.user} update={setUpdate}/>
         </div>
-        <div className='MembersContainer'>
-            <MembersTable membros={boxDetalhe.user}/>
-        </div>
-    </div>
     );
 };
 
-export default SubscribePage;
+export default BoxesPage;

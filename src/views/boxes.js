@@ -3,7 +3,8 @@ import { useParams } from 'react-router';
 import { getServiceBoxDetalhe } from '../services/boxes.service.js'
 import Subscription from '../components/subscription';
 import MembersTable from '../components/table';
-import Loading_component from '../components/loading'
+import Loading_component from '../components/loading';
+import ImgBox from '../assets/images/boxes/box-detalhes.jpg';
 
 const BoxesPage = () => {
     const { id } = useParams();
@@ -40,7 +41,7 @@ const BoxesPage = () => {
         <div className='ProductBoxContainer'>
             <h2>{boxDetalhe.name || ''}</h2>
             <div className='ProductBoxElements'>
-                <h3>Uma imagem entra aqui</h3>
+                <p><img src={ImgBox} alt='foto demosntrativa da box'/></p>
                 <div>
                     <p>Descrição:</p>
                     <p>{boxDetalhe.description || ''}</p>

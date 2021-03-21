@@ -1,4 +1,4 @@
-import NerdBoxLogo from '../../assets/images/logo-01.png'
+import NerdBoxLogo from '../../assets/images/logos/logo-header.png'
 
 
 const Header = ()=>{

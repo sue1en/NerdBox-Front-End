@@ -2,12 +2,12 @@ body{
     margin:0;
     padding:0;
     font-family: Verdana;
-    background: #252D3A;
+    background: #1d1b25;
 }
 
 /* ______________HEADER______________ */
 header{
-    background: #30295a;
+    background: #2b2450;
     display: flex;
     align-items: center;
 }
@@ -35,12 +35,35 @@ header .NavBar li a{
 }
 /* ______________FOOTER______________ */
 footer{
-    background: #30295a;
-    padding: 20px;
-    color:#4bbcba
+    background: #2b2450;
+    padding: 10px;
+    color:#4bbcba;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
 }
-footer p{
-    font-weight: bold;
+
+footer .LogoFooter {
+    padding: 10px 30px;
+
+}
+footer .LogoFooter p{
+    font-size: 12px;
+
+}
+footer .LogoFooter p img{
+    width: 80px;
+    padding: 10px 0;
+}
+footer .SocialMedias {
+    margin: 0 15px;
+}
+footer .SocialMedias p{
+    margin: 10px;
+}
+footer .SocialMedias p img{
+    width:16px;
+    margin-right: 10px;
 }
 
 /* ______________MAIN/ home______________ */
@@ -52,21 +75,25 @@ main .Home{
     background: #35576d;
     text-align: center;
     padding:80px;
-    height: 150px;
+    height: 45vh;
 }
 #ReviewContainer{
     display: flex;
     justify-content: space-evenly;
+    height: 50vh;
 }
 .ReviewCard{
-    background: #7a7a7a;
+    background: #6459a5;
     display:flex;
     align-items: center;
     justify-content: space-between;
     max-width: 400px;
+    min-width: 380px;
+    height: 125px;
     margin: 50px 20px;
     padding: 20px 20px 20px 40px;
     border-radius: 80px;
+    border: 2px solid #4cd8d6;
 }
 .ReviewText{
     max-width: 270px;
@@ -75,14 +102,15 @@ main .Home{
 .ReviewText h3, p{
     margin:0;
 }
-.ReviewImage{
+.ReviewImage img{
     width: 120px;
     height: 120px;
-    background: #ccc;
-    text-align: center;
+    background:#2e8180;
     border-radius: 60px;
     margin-left: 10px;
+    border:2px solid #2b2450;
 }
+
 #ProductsContainer{
     display: flex;
     flex-direction: column;
@@ -103,10 +131,11 @@ main .Home{
     margin: 7px;
     text-decoration: none;
 }
-.ProductImage{
+.ProductImage img{
     background: #444;
-    height:200px;
+    width: 320px;
     margin:15px;
+    border-radius: 10px;
 }
 .ProductTitle{
     text-transform: uppercase;
@@ -138,7 +167,6 @@ main .Home{
     align-items: center;
 }
 .ProductBoxContainer{
-    height:300px;
     width: 80vw;
     background-color: #eee;
     border-radius: 20px;
@@ -147,21 +175,22 @@ main .Home{
 }
 .ProductBoxContainer h2{
     margin: 0;
+    padding-bottom: 10px;
     text-align: center;
+    text-transform: uppercase;
 }
 .ProductBoxElements{
     display: flex;
     justify-content: space-between;
 }
-.ProductBoxElements h3{
-    background:#444;
-    width:160%;
-    height: 250px;
-    margin: 10px 10px 10px 0;
-    text-align: center;
+.ProductBoxElements p img{
+    width: 100%;
+    margin-right:10px;
+    border-radius: 10px;
 }
-.ProductBoxElements p{
-    margin: 10px 0 10px 10px;
+.ProductBoxElements div{
+    width: 70%;
+    padding-left:20px;
 }
 .SubscribeContainer{
     display: flex;

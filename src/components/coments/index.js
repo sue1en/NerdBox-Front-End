@@ -1,3 +1,5 @@
+import ReviewFoto from '../../assets/images/review-foto.png'
+
 const MemberReviews = () => {
     return(
         <div id='ReviewContainer'>
@@ -7,7 +9,7 @@ const MemberReviews = () => {
                     <p>Mussum Ipsum, cacilds vidis litro abertis. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Suco de cevadiss deixa as pessoas mais interessantis.</p>
                 </div>
                 <div className='ReviewImage'>
-                    <h3>IMG</h3>
+                    <img src={ReviewFoto} alt='foto comentarios'/>
                 </div>
             </div>
             <div className='ReviewCard'>
@@ -16,7 +18,7 @@ const MemberReviews = () => {
                     <p>Mussum Ipsum, cacilds vidis litro abertis. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Suco de cevadiss deixa as pessoas mais interessantis.</p>
                 </div>
                 <div className='ReviewImage'>
-                    <h3>IMG</h3>
+                    <img src={ReviewFoto} alt='foto comentarios'/>
                 </div>
             </div>
         </div>

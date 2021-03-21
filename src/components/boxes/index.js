@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useState } from 'react';
 import { getServiceAllBoxes } from '../../services/boxes.service.js';
 import { Link } from 'react-router-dom';
+import BoxesImage from '../../assets/images/boxes/modelbox.jpg'
 
 
 const ProductBoxes = () => {
@@ -28,7 +29,7 @@ const ProductBoxes = () => {
                     {boxes.map(item => (
                         <li key={item.id}> 
                             <Link to={`/boxes/${item.id}`}>
-                                <h4 className='ProductImage'>IMAGEM</h4>
+                                <p className='ProductImage'><img src={BoxesImage} alt='imagem da caixa'/></p>
                                 <p className='ProductTitle'>{item.name}</p>
                                 <p className='ProductPrice'>R$ {item.price}</p>
                             </Link>

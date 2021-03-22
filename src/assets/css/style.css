@@ -12,151 +12,26 @@ header{
     align-items: center;
 }
 
-.HeaderLogo img{
-    width: 80px;
-    padding: 15px 60px;
-}
-header .NavBar{
-    display: flex;
-    margin:0;
-    padding:0;
-    width: 100vw;
-    justify-content: center;
-}
-header .NavBar li{
-    list-style: none;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-header .NavBar li a{
-    text-decoration: none;
-    color:#4bbcba;
-}
 /* ______________FOOTER______________ */
 footer{
     background: #2b2450;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
     color:#4bbcba;
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-footer .LogoFooter {
-    padding: 10px 30px;
-
-}
-footer .LogoFooter p{
-    font-size: 12px;
-
-}
-footer .LogoFooter p img{
-    width: 80px;
-    padding: 10px 0;
-}
-footer .SocialMedias {
-    margin: 0 15px;
-}
-footer .SocialMedias p{
-    margin: 10px;
-}
-footer .SocialMedias p img{
-    width:16px;
-    margin-right: 10px;
 }
 
 /* ______________MAIN/ home______________ */
 
-main .Home{
-    /* padding: 20px; */
-}
 .Introduction{
     background: #35576d;
     text-align: center;
     padding:80px;
     height: 45vh;
-}
-#ReviewContainer{
-    display: flex;
-    justify-content: space-evenly;
-    height: 50vh;
-}
-.ReviewCard{
-    background: #6459a5;
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 400px;
-    min-width: 380px;
-    height: 125px;
-    margin: 50px 20px;
-    padding: 20px 20px 20px 40px;
-    border-radius: 80px;
-    border: 2px solid #4cd8d6;
-}
-.ReviewText{
-    max-width: 270px;
-
-}
-.ReviewText h3, p{
-    margin:0;
-}
-.ReviewImage img{
-    width: 120px;
-    height: 120px;
-    background:#2e8180;
-    border-radius: 60px;
-    margin-left: 10px;
-    border:2px solid #2b2450;
-}
-
-#ProductsContainer{
-    display: flex;
-    flex-direction: column;
- 
-}
-#ProductsContainer ul{
-    display: flex;
-    padding: 10px;
-    justify-content: space-evenly;
-}
-
-#ProductsContainer ul li{
-    background:#eee;
-    list-style: none;
-    border: 2px solid #000;
-    border-radius: 20px;
-    width: 350px;
-    margin: 7px;
-    text-decoration: none;
-}
-.ProductImage img{
-    background: #444;
-    width: 320px;
-    margin:15px;
-    border-radius: 10px;
-}
-.ProductTitle{
-    text-transform: uppercase;
-    font-weight: bold;
-    margin: 0;
-    text-align: center;
-    padding: 15px;
-    font-size: 18px;
-}
-.ProductDescription{
-    text-indent: 12px;
-    word-wrap: break-word;
-    margin: 0;
-    padding: 15px;
-    flex-grow: 2;
-}
-.ProductPrice{
-    font-weight: bold;
-    color:#ff7b00;
-    margin: 0;
-    padding: 10px 15px;
+    width: inherit;
+    width: initial;
+    width: unset;
 }
 
 /* ______________MAIN inscricão______________ */
@@ -228,19 +103,4 @@ form .FormElement input{
     margin-left: 10px;
     padding:2px;
     flex-grow: 1;
-}
-.MembersContainer{
-    height:250px;
-    width: 80vw;
-    background-color: #eee;
-    border-radius: 20px;
-    margin:30px;
-    padding:20px
-}
-/* ______________MAIN SOBRE______________ */
-.SobreContainer{
-    background-color: #ccc;
-    text-align: center;
-    margin: 30px;
-    padding: 30px;
 }

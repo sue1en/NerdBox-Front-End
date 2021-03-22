@@ -3,7 +3,7 @@ import Footer from './footer';
 
 const Layout = (props) => {
     return(
-        <div>
+        <div className='MainBody'>
             <Header/>
             <main>
                 {props.children}
@@ -14,3 +14,5 @@ const Layout = (props) => {
 };
 
 export default Layout;
+
+

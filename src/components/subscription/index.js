@@ -43,7 +43,7 @@ const Subscription = ({ id, update}) => {
 
         <div className='SubscribeContainer'>
             <div className='SubscribeEntrieBox'>
-                <p><input type="text" name="email" value={form.email || ""} onChange={handlerChange} placeholder="Inseira seu Email"/></p>
+                <p><input type="text" name="email-2" value={form.email || ""} onChange={handlerChange} placeholder="Insira seu Email"/></p>
                 <br/>
                 <button onClick={submitForm}>Inscreva-se</button>
             </div>

@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState } from 'react';
+// import React, {useCallback, useEffect, useState } from 'react';
 import MemberReviews from '../components/coments';
 import ProductBoxes from '../components/boxes';
 
@@ -18,6 +18,11 @@ const Home = () => {
 
 export default Home;
 
+
+
+
+
+
 /* 
 Função auto executável(()=>{})().
 O use.Effect retira a necessiddade das () no final da função auto executável usar.Efeito(da função) 
@@ -28,7 +33,6 @@ O use.Effect retira a necessiddade das () no final da função auto executável 
 // <p>{teste}</p>
 // <button onClick={() => setName(teste + 1)}> adiciona 1 </button>
 // </div> 
-
 
 // React.useEffect(() => {
     //     const getProdutos = async () => {

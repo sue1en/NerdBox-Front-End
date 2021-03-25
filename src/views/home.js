@@ -1,44 +1,67 @@
-// import React, {useCallback, useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState } from 'react';
+import { getServiceAllBoxes } from '../services/boxes.service.js';
+import { Col, Row} from 'reactstrap'
+import styled from 'styled-components'
+
+//______ COMPONENTES______
+import IntroCarousel from '../components/intro-carousel';
 import MemberReviews from '../components/coments';
 import ProductBoxes from '../components/boxes';
+import Loading_component from '../components/loading';
+
 
 
 const Home = () => {
+
+    const [boxes, setBoxes] = useState([]);
+    // const [hasError, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
     
+    const getBoxes = useCallback(() => {
+        setLoading(true)
+        getServiceAllBoxes()
+            .then(res => {
+                setBoxes(res.data)
+                setLoading(false)
+            })
+            .catch(error => {
+                // setError(true)
+                // console.log('Temos um erro', err)
+                setLoading(false)
+            })
+    }, []);
+
+
+    useEffect(()=>{
+        getBoxes();
+    },[getBoxes]
+    );
+
+    const MapBoxes = (boxes) => boxes.map((item, index) => (
+        <Col key={index}>
+            <ProductBoxes item={ item }/>
+        </Col>
+    ))
+
+
     return(
         <div className ='Home'>
-            <div className='Introduction'>
-            <h3>Olá Mundo</h3>
-            </div>
+            <IntroCarousel/>
             <MemberReviews/>
-            <ProductBoxes/>
+            <BoxesContainer>
+                {loading ? <Loading_component />  
+                        : (
+                            <Row>
+                                {MapBoxes(boxes)}
+                            </Row>
+                )}
+            </BoxesContainer>
         </div> 
     );
 };
 
 export default Home;
 
-
-
-
-
-
-/* 
-Função auto executável(()=>{})().
-O use.Effect retira a necessiddade das () no final da função auto executável usar.Efeito(da função) 
-*/
-
-// Teste do useState
-// <div>
-// <p>{teste}</p>
-// <button onClick={() => setName(teste + 1)}> adiciona 1 </button>
-// </div> 
-
-// React.useEffect(() => {
-    //     const getProdutos = async () => {
-        //             const res = await getServiceProdutos();
-        //             setProdutos(res.data)
-        //         };
-        //         getProdutos();
-        //         /*REVIZAR ESSE "INCEPTION" DE FUNÇÃO!!!! */
-        //     }, []);
+const BoxesContainer = styled.div`
+    margin:50px
+`

@@ -1,8 +1,10 @@
 import http from '../config/http';
 
-const createServiceSubscription = (id, data) => http.post(`boxes/${id}/subscription`, data);
-const createServiceUsers = (data) => http.post(`/account`, data);
-const deleteServiceUsers = (id_box, id_member) => http.delete(`boxes/${id_box}/subscription/${id_member}`);
+const createServiceSubscription = (id, data) => http.post(`/caixas/${id}/assinar`, data);
+
+const createServiceUsers = (data) => http.post(`/register`, data);
+
+const deleteServiceUsers = (id_member) => http.delete(`/caixas/delete/${id_member}`);
 
 
 export {

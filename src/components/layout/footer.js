@@ -1,57 +1,66 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom'
+import styled from 'styled-components';
+import {
+    Navbar,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+} from 'reactstrap';
+import { AiOutlineFacebook, AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
 import LogoFooter from '../../assets/images/logos/logo-footer.png'
-import FacebookLogo from '../../assets/images/social-medias/facebook-img.png';
-import InstagramLogo from '../../assets/images/social-medias/instagram-img.png';
-import WhatsappLogo from '../../assets/images/social-medias/whatsapp-img.png';
 
 const Footer = () => (
         <footer>
-            <SLogoFooter>
-                <img src={LogoFooter} alt='Nerd Box Logo rodapé'/>
-                <p>Todos os direitos reservados.</p>
-            </SLogoFooter>
-            <SSocialMedias>
-                <SLink to="#">
-                    <p>
-                    <img src={FacebookLogo} alt=''/>Facebook</p>
-                </SLink>
-                <SLink to="#">
-                    <p><img src={InstagramLogo} alt=''/>Instagram</p>
-                </SLink>
-                <SLink to="#">
-                    <p><img src={WhatsappLogo} alt=''/>Whatsapp</p>
-                </SLink>
-            </SSocialMedias>
+            <SNavbar color="#2b2450" light expand="md">
+                <SNavbarBrand>
+                    <img src={LogoFooter} alt="Nerd Box Logo"/>
+                    <p>Todos os direitos reservados.</p>
+                </SNavbarBrand>
+                    <SNav className="mr-auto" navbar>
+                        <NavItem>
+                            <SNavLink tag={Link} to="#"><AiOutlineFacebook/>Facebook</SNavLink>
+                        </NavItem>
+                        <NavItem>
+                            <SNavLink tag={Link} to="#"><AiOutlineInstagram/>Instagram</SNavLink>
+                        </NavItem>
+                        <NavItem>
+                            <SNavLink tag={Link} to="#"><AiOutlineWhatsApp/>Whatsapp</SNavLink>
+                        </NavItem>
+                    </SNav>
+            </SNavbar>
         </footer>
 );
 
 export default Footer;
 
-const SLogoFooter = styled.div`
-    padding: 10px 30px;
+const SNavbar = styled(Navbar)`
+    background-color:#2b2450;
+`
+
+const SNavbarBrand = styled(NavbarBrand)`
+    flex-grow:1;
+
     img{
-        width: 80px;
-        padding: 10px 0;
+        width: 100px; 
     }
     p{
-        font-size: 12px;
+        color:#4bbcba !important;
+        font-size:14px;
+        margin:5px 0 0 0;
     }
 `
-const SSocialMedias = styled.div`
-    margin: 0 15px;
-    `
-const SLink = styled(Link)`
-    text-decoration: none;
-    color:#4bbcba;
-    p{
-        display:flex;
-        margin: 10px;
-        align-items: center;
+const SNav = styled(Nav)`
+    flex-direction:column !important;
+`
+const SNavLink = styled(NavLink)`
+    color:#4bbcba !important;
+    padding:5px;
+    svg{
+        margin-right:5px;
+    }
 
-        img{
-            width:16px;
-            margin-right: 10px;
-        }
+    :hover{
+        color:#fff !important;
     }
 `

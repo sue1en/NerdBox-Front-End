@@ -1,61 +1,73 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { NavLink as RRDNavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+} from 'reactstrap';
+
+
+//_____Images_____
 import NerdBoxLogo from '../../assets/images/logos/logo-header.png';
 
 
-const Header = ()=>{
+const Header = ()=>{ 
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => setIsOpen(!isOpen);
+    
     return(
         <header>
-                <SHeaderLogo>
-                    <Link to="/"><img src={NerdBoxLogo} alt="Nerd Box Logo"/>
-                    </Link>
-                </SHeaderLogo>
-
-                <SNavList>
-                    <li>
-                        <SLink to="/">Home</SLink>
-                    </li>
-                    <li>
-                        <SLink to="/#ReviewContainer">Depoimentos</SLink>
-                    </li>
-                    <li>
-                        <SLink to="/#ProductsContainer">Nossos Produtos</SLink>
-                    </li>
-                    <li>
-                        <SLink to="/sobre">Sobre</SLink>
-                    </li>
-                </SNavList>
+            <SNavbar color="#2b2450" light expand="md">
+                <SNavbarBrand tag={RRDNavLink} to="/">
+                    <img src={NerdBoxLogo} alt="Nerd Box Logo"/>
+                </SNavbarBrand>
+                <NavbarToggler onClick={toggle} />
+                <Collapse isOpen={isOpen} navbar>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem>
+                            <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Home</SNavLink>
+                        </NavItem>
+                        <NavItem>
+                            <SNavLink exact tag={RRDNavLink} to="/sobre" activeClassName="active">Sobre</SNavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </SNavbar>
         </header>
     );
 };
 
 export default Header;
 
-const SHeaderLogo = styled.div`
-    padding: 15px 60px;
+const SNavbar = styled(Navbar)`
+    background-color:#2b2450;
+`
 
+const SNavbarBrand = styled(NavbarBrand)`
     img{
-        width: 100px;
+        width: 100px; 
     }
 `
+const SNavLink = styled(NavLink)`
+    color:#4bbcba !important; 
+    font-weight:bolder;
+    text-transform:uppercase;
+    font-size:18px;
+    padding:5px 20px !important;
+    margin:0 5px;
+    border-radius:20px;
 
-const SNavList =styled.ul`
-    display:flex;
-    justify-content: center;
-    align-items:center;
-    margin:0;
-    padding:0;
-    // width: 100vw;
-
-    li{
-        list-style: none;
-        padding: 10px 20px;
-        text-transform: uppercase;
-        font-weight: bold;
+    :hover{
+        background-color:#42396e;
     }
-`
-
-const SLink = styled(Link)`
-    text-decoration: none;
-    color:#4bbcba;
+    /* &.active{
+        color:blue !important;
+    } */
 `

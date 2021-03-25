@@ -1,30 +1,34 @@
-body{
+/* Cores{
+
+} */
+
+/* body{
     margin:0;
     padding:0;
     font-family: Verdana;
     background: #1d1b25;
-}
+} */
 
 /* ______________HEADER______________ */
-header{
+/* header{
     background: #2b2450;
     display: flex;
     align-items: center;
-}
+} */
 
 /* ______________FOOTER______________ */
-footer{
+/* footer{
     background: #2b2450;
     display:flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     color:#4bbcba;
-}
+} */
 
 /* ______________MAIN/ home______________ */
 
-.Introduction{
+/* .Introduction{
     background: #35576d;
     text-align: center;
     padding:80px;
@@ -32,11 +36,11 @@ footer{
     width: inherit;
     width: initial;
     width: unset;
-}
+} */
 
 /* ______________MAIN inscricão______________ */
 
-.Inscricao{
+/* .Inscricao{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,4 +107,5 @@ form .FormElement input{
     margin-left: 10px;
     padding:2px;
     flex-grow: 1;
-}
+    color:#42396e;
+} */

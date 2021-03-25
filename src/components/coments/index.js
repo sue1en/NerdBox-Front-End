@@ -1,62 +1,76 @@
+import React from 'react';
+import { CardDeck, Card, CardImg, CardBody, CardTitle, CardText } from 'reactstrap';
 import styled from 'styled-components';
 import ReviewFoto from '../../assets/images/review-foto.png'
 
 const MemberReviews = () => {
     return(
-        <SReviewContainer>
-            <SReviewCard>
-                <div>
-                    <h3>Mussum Cacilds</h3>
-                    <p>Mussum Ipsum, cacilds vidis litro abertis. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Suco de cevadiss deixa as pessoas mais interessantis.</p>
-                </div>
-                <img src={ReviewFoto} alt='foto comentarios'/>
-            </SReviewCard>
-            <SReviewCard>
-                <div>
-                    <h3>Cacilds Mussum</h3>
-                    <p>Mussum Ipsum, cacilds vidis litro abertis. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Suco de cevadiss deixa as pessoas mais interessantis.</p>
-                </div>
-                <img src={ReviewFoto} alt='foto comentarios'/>
-            </SReviewCard>
-        </SReviewContainer>
+        <ComentsContainer>
+            <h2>Comentários</h2>
+            <SCardDeck>
+                <SCard>
+                    <SCardBody>
+                        <SCardTitle tag="h5">Mussum Cacilds</SCardTitle>
+                        <SCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</SCardText>
+                    </SCardBody>
+                    <SCardImg top width="100%" src={ReviewFoto} alt="Card image cap" />
+                </SCard>
+                <SCard>
+                    <SCardBody>
+                        <SCardTitle tag="h5">Cacildina Mussuzis</SCardTitle>
+                        <SCardText>Mussum Ipsum, cacilds vidis litro abertis. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Suco de cevadiss deixa as pessoas mais interessantis.</SCardText>
+                    </SCardBody>
+                    <SCardImg top width="100%" src={ReviewFoto} alt="Card image cap" />
+                </SCard>
+            </SCardDeck>
+        </ComentsContainer>
     )
 };
 
 export default MemberReviews;
 
-const SReviewContainer = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    align-items:center;
-    height: 50vh;
+const ComentsContainer = styled.div`
+    padding:30px 50px 100px 50px;
+    h2{
+        color:#4bbcba;
+        padding:0 0 40px 30px;
+    }
 `
-const SReviewCard = styled.div`
+
+const SCardDeck = styled(CardDeck)`
+    justify-content:space-evenly;
+`
+
+const SCard = styled(Card)`
     display:flex;
+    flex-direction:row;
     align-items: center;
     justify-content: space-between;
     background: #6459a5;
     border: 2px solid #4cd8d6;
+    border-radius: 150px;
+    max-width: 580px;
+    min-width: 460px;
+    margin:15px;
+`
+
+const SCardImg = styled(CardImg)` 
+    width: 150px;
+    background:#2e8180;
     border-radius: 80px;
-    padding: 20px 20px 20px 40px;
-    max-width: 400px;
-    min-width: 380px;
-    height: 125px;
-    margin: 50px 20px;
+    border:2px solid #2b2450;
+    margin: 7px 7px;
+`
 
-    div{
-        max-width: 270px;
-        padding:10px;
-        h3, p{
-            margin:0;
-        }
-    }
+const SCardBody = styled(CardBody)`
+    margin: 0 10px;
+    padding:15px 5px 15px 40px;
+`
 
-    img{
-        width: 120px;
-        height: 120px;
-        background:#2e8180;
-        border-radius: 60px;
-        margin-left: 10px;
-        border:2px solid #2b2450;
-    }
+const SCardTitle = styled(CardTitle)`
+    color:#1d1b25;
+    font-weight:bold;
+`
+const SCardText = styled(CardText)`
+    text-indent:16px;
 `

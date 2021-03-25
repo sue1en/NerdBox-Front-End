@@ -4,29 +4,29 @@ import { createServiceUsers } from '../../services/users.service';
 
 
 const Subscription = ({ id, update}) => {
-    const [newMember, setNewMemberForm] = useState({});
-    const [form, setForm] = useState({});
+    const [newMemberForm, setNewMemberForm] = useState({});
+    const [memberForm, setMemberForm] = useState({});
 
 
     //função para alterar o estado dos inputs
     const handlerChangeNew = (e) => {
         setNewMemberForm({
-            ...newMember,
+            ...newMemberForm,
             [e.target.name]: e.target.value
         })
     };
     const handlerChange = (e2) => {
-        setForm({
-            ...form,
+        setMemberForm({
+            ...memberForm,
             [e2.target.name]: e2.target.value
         })
     };
 
     const submitForm = () => {
-        createServiceSubscription(id, form)
+        createServiceSubscription(id, memberForm)
             .then(() =>{
-                alert(`Cadastro do aluno ${form.name} realizado com sucesso!!`)
-                setForm({});
+                alert(`Cadastro do aluno realizado com sucesso!!`)
+                setMemberForm({});
                 update(true)
             })
             .catch((error) => {
@@ -35,25 +35,25 @@ const Subscription = ({ id, update}) => {
         })
     }
 
-    const submitNewMember = () => {
-        createServiceUsers(newMember);
+    const submitNewMemberForm = () => {
+        createServiceUsers(newMemberForm);
     }
 
     return(
 
         <div className='SubscribeContainer'>
             <div className='SubscribeEntrieBox'>
-                <p><input type="text" name="email-2" value={form.email || ""} onChange={handlerChange} placeholder="Insira seu Email"/></p>
+                <p><input type="text" name="email" value={memberForm.email || ""} onChange={handlerChange} placeholder="Insira seu Email"/></p>
                 <br/>
                 <button onClick={submitForm}>Inscreva-se</button>
             </div>
             <br/>
             <div className='SubscribeEntrieBox'>
-                <p><input type="text" name="name" value={newMember.name || ""} onChange={handlerChangeNew} placeholder="Insira seu nome"/></p>
-                <p><input type="text" name="email" value={newMember.email || ""} onChange={handlerChangeNew} placeholder="Inseira seu Email"/></p>
-                <p><input type="date" name="birth_date" value={newMember.birth_date || ""} onChange={handlerChangeNew}/></p>
+                <p><input type="text" name="name" value={newMemberForm.name || ""} onChange={handlerChangeNew} placeholder="Insira seu nome"/></p>
+                <p><input type="text" name="email" value={newMemberForm.email || ""} onChange={handlerChangeNew} placeholder="Inseira seu Email"/></p>
+                <p><input type="date" name="birth_date" value={newMemberForm.birth_date || ""} onChange={handlerChangeNew}/></p>
                 <br/>
-                <button onClick={submitNewMember}>Inscreva-se</button>
+                <button onClick={submitNewMemberForm}>Inscreva-se</button>
             </div>
         </div>
     )

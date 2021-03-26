@@ -4,12 +4,12 @@ import { Col, Row} from 'reactstrap'
 import styled from 'styled-components'
 
 //______ COMPONENTES______
-import IntroCarousel from '../components/intro-carousel';
+// import IntroCarousel from '../components/intro-carousel';
 import MemberReviews from '../components/coments';
 import ProductBoxes from '../components/boxes';
 import Loading_component from '../components/loading';
 
-
+import ImageIntro02 from '../assets/images/intro/img-test-2.jpg';
 
 const Home = () => {
 
@@ -46,22 +46,31 @@ const Home = () => {
 
     return(
         <div className ='Home'>
-            <IntroCarousel/>
-            <MemberReviews/>
-            <BoxesContainer>
-                {loading ? <Loading_component />  
-                        : (
-                            <Row>
-                                {MapBoxes(boxes)}
-                            </Row>
-                )}
-            </BoxesContainer>
+            {/* <img  width="1000vw" src={ImageIntro02}/> */}
+                <Content/>
+                <MemberReviews/>
+                <div>
+                    {loading ? <Loading_component />  
+                            : (
+                                <Row>
+                                    {MapBoxes(boxes)}
+                                </Row>
+                    )}
+                </div>
         </div> 
     );
 };
 
 export default Home;
 
-const BoxesContainer = styled.div`
-    margin:50px
+// const BoxesContainer = styled.div`
+//     margin:50px;
+// `
+
+const Content = styled.img`
+    background-image: url(${ImageIntro02});
+    background-repeat: no-repeat;
+    width: 100vw;
+    height:400px;
+    border:none;
 `

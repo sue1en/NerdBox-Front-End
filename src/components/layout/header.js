@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink as RRDNavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import {
@@ -10,7 +10,7 @@ import {
     NavItem,
     NavLink,
 } from 'reactstrap';
-
+import '../../assets/css/style.css'
 
 //_____Images_____
 import NerdBoxLogo from '../../assets/images/logos/logo-header.png';
@@ -23,51 +23,59 @@ const Header = ()=>{
     const toggle = () => setIsOpen(!isOpen);
     
     return(
+        
         <header>
-            <SNavbar color="#2b2450" light expand="md">
-                <SNavbarBrand tag={RRDNavLink} to="/">
-                    <img src={NerdBoxLogo} alt="Nerd Box Logo"/>
-                </SNavbarBrand>
-                <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Home</SNavLink>
-                        </NavItem>
-                        <NavItem>
-                            <SNavLink exact tag={RRDNavLink} to="/sobre" activeClassName="active">Sobre</SNavLink>
-                        </NavItem>
-                    </Nav>
-                </Collapse>
-            </SNavbar>
+                <Navbar  expand="md" fixed="top"> {/* < nav >*/}
+                    <NavbarBrand tag={RRDNavLink} to="/">
+                        <img src={NerdBoxLogo} alt="Nerd Box Logo"/>
+                    </NavbarBrand>
+                    <NavbarToggler onClick={toggle} />
+                    <Collapse isOpen={isOpen} navbar>
+                        <Nav className="mr-auto" navbar> {/* < ul >*/}
+                            <NavItem> {/* < li >*/}
+                                <NavLink exact tag={RRDNavLink} to="/" activeClassName="active">Home</NavLink> {/* < a href >*/}
+                            </NavItem>
+                            <NavItem>
+                                <NavLink exact tag={RRDNavLink} to="/sobre" activeClassName="active">Sobre</NavLink>
+                            </NavItem>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
         </header>
     );
 };
 
 export default Header;
 
-const SNavbar = styled(Navbar)`
-    background-color:#2b2450;
-`
+// const SHeader = styled.header`
+//     background-color:#2b2450;
+//     width:100vw;
+//     display:flex;
+//     justify-content:center;
+// `
 
-const SNavbarBrand = styled(NavbarBrand)`
-    img{
-        width: 100px; 
-    }
-`
-const SNavLink = styled(NavLink)`
-    color:#4bbcba !important; 
-    font-weight:bolder;
-    text-transform:uppercase;
-    font-size:18px;
-    padding:5px 20px !important;
-    margin:0 5px;
-    border-radius:20px;
+// const SNavbar = styled(Navbar)`
+//     /* background-color:#2b2450; */
+//     /* width:1200px; */
+// `
+// const SNavbarBrand = styled(NavbarBrand)`
+//     img{
+//         width: 80px; 
+//     }
+// `
+// const SNavLink = styled(NavLink)`
+//     color:#4bbcba !important; 
+//     font-weight:bolder;
+//     text-transform:uppercase;
+//     font-size:18px;
+//     padding:5px 20px !important;
+//     margin:0 5px;
+//     border-radius:20px;
 
-    :hover{
-        background-color:#42396e;
-    }
-    /* &.active{
-        color:blue !important;
-    } */
-`
+//     :hover{
+//         background-color:#42396e;
+//     }
+//     /* &.active{
+//         color:blue !important;
+//     } */
+// `

@@ -30,7 +30,11 @@ const MemberReviews = () => {
 export default MemberReviews;
 
 const ComentsContainer = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:center; 
     padding:30px 50px 100px 50px;
+    width:100vw;
     h2{
         color:#4bbcba;
         padding:0 0 40px 30px;
@@ -38,6 +42,8 @@ const ComentsContainer = styled.div`
 `
 
 const SCardDeck = styled(CardDeck)`
+    width:1200px;
+    /* background-color:blue; */
     justify-content:space-evenly;
 `
 

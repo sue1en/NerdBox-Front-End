@@ -12,55 +12,62 @@ import LogoFooter from '../../assets/images/logos/logo-footer.png'
 
 const Footer = () => (
         <footer>
-            <SNavbar color="#2b2450" light expand="md">
-                <SNavbarBrand>
+            <Navbar color="#2b2450" light expand="md">
+                <NavbarBrand>
                     <img src={LogoFooter} alt="Nerd Box Logo"/>
                     <p>Todos os direitos reservados.</p>
-                </SNavbarBrand>
-                    <SNav className="mr-auto" navbar>
+                </NavbarBrand>
+                    <Nav className="mr-auto" navbar>
                         <NavItem>
-                            <SNavLink tag={Link} to="#"><AiOutlineFacebook/>Facebook</SNavLink>
+                            <NavLink tag={Link} to="#"><AiOutlineFacebook/>Facebook</NavLink>
                         </NavItem>
                         <NavItem>
-                            <SNavLink tag={Link} to="#"><AiOutlineInstagram/>Instagram</SNavLink>
+                            <NavLink tag={Link} to="#"><AiOutlineInstagram/>Instagram</NavLink>
                         </NavItem>
                         <NavItem>
-                            <SNavLink tag={Link} to="#"><AiOutlineWhatsApp/>Whatsapp</SNavLink>
+                            <NavLink tag={Link} to="#"><AiOutlineWhatsApp/>Whatsapp</NavLink>
                         </NavItem>
-                    </SNav>
-            </SNavbar>
+                    </Nav>
+            </Navbar>
         </footer>
 );
 
 export default Footer;
 
-const SNavbar = styled(Navbar)`
-    background-color:#2b2450;
-`
+// const SFooter = styled.footer`
+//     background-color:#2b2450;
+//     width:100vw;
+//     display:flex;
+//     justify-content:center;
+// `
 
-const SNavbarBrand = styled(NavbarBrand)`
-    flex-grow:1;
+// const SNavbar = styled(Navbar)`
+//     /* background-color:blue; */
+//     width:1200px;
+// `
+// const SNavbarBrand = styled(NavbarBrand)`
+//     flex-grow:1;
 
-    img{
-        width: 100px; 
-    }
-    p{
-        color:#4bbcba !important;
-        font-size:14px;
-        margin:5px 0 0 0;
-    }
-`
-const SNav = styled(Nav)`
-    flex-direction:column !important;
-`
-const SNavLink = styled(NavLink)`
-    color:#4bbcba !important;
-    padding:5px;
-    svg{
-        margin-right:5px;
-    }
+//     img{
+//         width: 80px; 
+//     }
+//     p{
+//         color:#4bbcba !important;
+//         font-size:14px;
+//         margin:5px 0 0 0;
+//     }
+// `
+// const SNav = styled(Nav)`
+//     flex-direction:column !important;
+// `
+// const SNavLink = styled(NavLink)`
+//     color:#4bbcba !important;
+//     padding:5px;
+//     svg{
+//         margin-right:5px;
+//     }
 
-    :hover{
-        color:#fff !important;
-    }
-`
+//     :hover{
+//         color:#fff !important;
+//     }
+// `

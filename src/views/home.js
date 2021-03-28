@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useState } from 'react';
 import { getServiceAllBoxes } from '../services/boxes.service.js';
 import { Col, Row} from 'reactstrap'
 import styled from 'styled-components'
+import Teste from '../assets/estilo-teste.js';
 
 //______ COMPONENTES______
 // import IntroCarousel from '../components/intro-carousel';
@@ -45,32 +46,27 @@ const Home = () => {
 
 
     return(
-        <div className ='Home'>
-            {/* <img  width="1000vw" src={ImageIntro02}/> */}
-                <Content/>
-                <MemberReviews/>
-                <div>
-                    {loading ? <Loading_component />  
-                            : (
-                                <Row>
-                                    {MapBoxes(boxes)}
-                                </Row>
-                    )}
-                </div>
-        </div> 
+            <Teste>
+                {/* <img  width="1000vw" src={ImageIntro02}/> */}
+                    <Content/>
+                    <div>
+                        {loading ? <Loading_component />  
+                                : (
+                                    <Row>
+                                        {MapBoxes(boxes)}
+                                    </Row>
+                        )}
+                    </div>
+                    <MemberReviews/>
+            </Teste>
     );
 };
 
 export default Home;
 
-// const BoxesContainer = styled.div`
-//     margin:50px;
-// `
-
 const Content = styled.img`
     background-image: url(${ImageIntro02});
     background-repeat: no-repeat;
-    width: 100vw;
-    height:400px;
+    height:100px;
     border:none;
 `

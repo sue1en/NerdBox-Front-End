@@ -4,14 +4,13 @@ const GlobalStyle = createGlobalStyle`
   *{
     margin:0;
     padding:0;
-    /* font-family: Verdana; */
+    font-family: Verdana;
   }
   
   #root{
-    display:flex;
-    flex-direction:column;
+    display:flex; 
+    flex-direction:column; 
     height:100vh;
-    /* align-items:center; */
   }
 `
 

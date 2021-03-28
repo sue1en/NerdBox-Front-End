@@ -14,6 +14,7 @@ import '../../assets/css/style.css'
 
 //_____Images_____
 import NerdBoxLogo from '../../assets/images/logos/logo-header.png';
+import Teste from '../../assets/estilo-teste.js';
 
 
 const Header = ()=>{ 
@@ -22,10 +23,10 @@ const Header = ()=>{
 
     const toggle = () => setIsOpen(!isOpen);
     
-    return(
-        
-        <header>
-                <Navbar  expand="md" fixed="top"> {/* < nav >*/}
+    return(   
+        <SHeader>
+            <Teste>
+                <Navbar expand="md"> {/* < nav >*/}
                     <NavbarBrand tag={RRDNavLink} to="/">
                         <img src={NerdBoxLogo} alt="Nerd Box Logo"/>
                     </NavbarBrand>
@@ -41,18 +42,19 @@ const Header = ()=>{
                         </Nav>
                     </Collapse>
                 </Navbar>
-        </header>
+            </Teste>
+        </SHeader>
     );
 };
 
 export default Header;
 
-// const SHeader = styled.header`
-//     background-color:#2b2450;
-//     width:100vw;
+const SHeader = styled.header`
+    background-color:#2b2450;
+    width:100vw;
 //     display:flex;
 //     justify-content:center;
-// `
+`
 
 // const SNavbar = styled(Navbar)`
 //     /* background-color:#2b2450; */

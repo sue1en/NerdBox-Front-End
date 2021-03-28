@@ -36,7 +36,7 @@ const Subscription = ({ id, update}) => {
     }
 
     const submitNewMemberForm = () => {
-        createServiceUsers(newMemberForm);
+        createServiceUsers(id, newMemberForm);
     }
 
     return(

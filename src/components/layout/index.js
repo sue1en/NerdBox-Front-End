@@ -20,8 +20,7 @@ export default Layout;
 const Main = styled.main`
     flex:1;
     background-color: #1d1b25;
-    /* justify-content:center; 
-    align-items:center; */
+    width:100vw
 `
 
 /* >>> Minhas cores <<<

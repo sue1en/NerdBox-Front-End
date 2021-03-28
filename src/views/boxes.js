@@ -8,6 +8,10 @@ import Subscription from '../components/subscription';
 import MembersTable from '../components/table';
 import Loading_component from '../components/loading';
 import ImgBox from '../assets/images/boxes/box-detalhes.jpg';
+import Teste from '../assets/estilo-teste.js';
+
+
+
 
 const BoxesPage = (props) => {
     const { id } = useParams();
@@ -43,46 +47,45 @@ const BoxesPage = (props) => {
     const printBoxDetalhe = (boxDetalhe) => {
         console.log(boxDetalhe)
         return(
-        <ProductBoxContainer>
+        <div>
             <h2>{boxDetalhe.name || ''}</h2>
-            <ProductBoxDetalhe>
+            <div>
                 <img src={ImgBox} width="70%" alt='foto demosntrativa da box'/>
                 <p>{boxDetalhe.description || ''}</p>
-            </ProductBoxDetalhe>
-        </ProductBoxContainer>
+            </div>
+        </div>
     )};
 
     return(
-        <div className='Inscricao'>
-           
+        <Teste>
             { loading ? <Loading_component/> : printBoxDetalhe(boxDetalhe)}
             <Subscription id={id} update={setUpdate}/>
             <MembersTable membros={boxDetalhe.assinantes} update={setUpdate}/>
-        </div>
+        </Teste>
     );
 };
 
 export default BoxesPage;
 
 
-const ProductBoxContainer = styled.div`
-    background-color:#eee;
-    margin:30px 60px;
-    padding:20px;
-    border-radius:10px;
-    h2{
-        text-transform:uppercase;
-        font-weight:bolder;
-        color:#1d1b25;
-        font-size:26px;
-    }
-`
-const ProductBoxDetalhe = styled.div`
-    display:flex;
-    img{
-        border-radius:10px;
-    }
-    p{
-        margin:0 0 0 20px;
-    }
-`
+// const ProductBoxContainer = styled.div`
+//     background-color:#eee;
+//     margin:30px 60px;
+//     padding:20px;
+//     border-radius:10px;
+//     h2{
+//         text-transform:uppercase;
+//         font-weight:bolder;
+//         color:#1d1b25;
+//         font-size:26px;
+//     }
+// `
+// const ProductBoxDetalhe = styled.div`
+//     display:flex;
+//     img{
+//         border-radius:10px;
+//     }
+//     p{
+//         margin:0 0 0 20px;
+//     }
+// `

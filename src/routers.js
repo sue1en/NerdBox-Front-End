@@ -23,7 +23,7 @@ const Routers = () => {
                <Route exact path='/' component={Home}/>
                <Route exact path='/boxes/:id' component={BoxesPage}/>
                <Route exact path='/sobre' component={Sobre}/>
-               <Router exact to='/error/404' component={Error404}/>
+               <Router to='/error/404' component={Error404}/>
                <Redirect from='*' to='/error/404' />
             </Layout>
          </Switch>

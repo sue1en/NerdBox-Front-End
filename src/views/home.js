@@ -14,59 +14,58 @@ import ImageIntro02 from '../assets/images/intro/img-test-2.jpg';
 
 const Home = () => {
 
-    const [boxes, setBoxes] = useState([]);
-    // const [hasError, setError] = useState(false);
-    const [loading, setLoading] = useState(false);
-    
-    const getBoxes = useCallback(() => {
-        setLoading(true)
-        getServiceAllBoxes()
-            .then(res => {
-                setBoxes(res.data)
-                setLoading(false)
-            })
-            .catch(error => {
-                // setError(true)
-                // console.log('Temos um erro', err)
-                setLoading(false)
-            })
-    }, []);
+   const [boxes, setBoxes] = useState([]);
+   const [loading, setLoading] = useState(false);
+   // const [hasError, setError] = useState(false);
+   
+   const getBoxes = useCallback(() => {
+      setLoading(true)
+      getServiceAllBoxes()
+         .then(res => {
+            setBoxes(res.data)
+            setLoading(false)
+         })
+         .catch(error => {
+            // setError(true)
+            // console.log('Temos um erro', err)
+            setLoading(false)
+         })
+   }, []);
+
+   useEffect(()=>{
+      getBoxes();
+   },[getBoxes]
+   );
+
+   const MapBoxes = (boxes) => boxes.map((item, index) => (
+      <Col md="3" xl="3" sm="12" xs="12" key={index} className="mb-4">
+         <ProductBoxes item={{...item, status: true }} />
+      </Col>
+   ))
 
 
-    useEffect(()=>{
-        getBoxes();
-    },[getBoxes]
-    );
-
-    const MapBoxes = (boxes) => boxes.map((item, index) => (
-        <Col key={index}>
-            <ProductBoxes item={ item }/>
-        </Col>
-    ))
-
-
-    return(
-            <Teste>
-                {/* <img  width="1000vw" src={ImageIntro02}/> */}
-                    <Content/>
-                    <div>
-                        {loading ? <Loading_component />  
-                                : (
-                                    <Row>
-                                        {MapBoxes(boxes)}
-                                    </Row>
-                        )}
-                    </div>
-                    <MemberReviews/>
-            </Teste>
-    );
+   return(
+         <Teste>
+               {/* <img  width="1000vw" src={ImageIntro02}/> */}
+                  <Content/>
+                  <div>
+                     {loading ? <Loading_component />  
+                              : (
+                                 <Row>
+                                       {MapBoxes(boxes)}
+                                 </Row>
+                     )}
+                  </div>
+                  <MemberReviews/>
+         </Teste>
+   );
 };
 
 export default Home;
 
 const Content = styled.img`
-    background-image: url(${ImageIntro02});
-    background-repeat: no-repeat;
-    height:100px;
-    border:none;
+   background-image: url(${ImageIntro02});
+   background-repeat: no-repeat;
+   height:100px;
+   border:none;
 `

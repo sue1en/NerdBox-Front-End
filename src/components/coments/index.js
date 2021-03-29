@@ -5,12 +5,17 @@ import styled from 'styled-components';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+// import "../../assets/css/slick.css";
+// import "../../assets/css/slick-theme.css";
+
 //IMAGES________
 import ReviewFoto from '../../assets/images/review-foto.png'
 
+
+
 const MemberReviews = () => {
 
-    var settings = {
+    const settings = {
         dots: true,
         infinite: true,
         speed: 600,
@@ -19,7 +24,7 @@ const MemberReviews = () => {
         initialSlide: 1,
         responsive: [
             {
-              breakpoint: 480,
+              breakpoint: 992,
               settings: {
                   slidesToShow: 1,
                   slidesToScroll: 1
@@ -27,38 +32,38 @@ const MemberReviews = () => {
             }
           ]
       };
+
       return (
           <ReviewsContainer>
             <h2> Responsive </h2>
             <StyledSlider { ...settings }>
-                <React.Fragment>    
-                    <SliderItem>
-                    <img src={ReviewFoto}/>
-                    <h3>Nome do fulano</h3>
-                    <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
-                    </SliderItem>
-                </React.Fragment>
-                <React.Fragment>    
-                    <SliderItem>
-                    <img src={ReviewFoto}/>
-                    <h3>Nome do fulano</h3>
-                    <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
-                    </SliderItem>
-                </React.Fragment>
-                <React.Fragment>    
-                    <SliderItem>
-                    <img src={ReviewFoto}/>
-                    <h3>Nome do fulano</h3>
-                    <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
-                    </SliderItem>
-                </React.Fragment>
-                <React.Fragment>    
-                    <SliderItem>
-                    <img src={ReviewFoto}/>
-                    <h3>Nome do fulano</h3>
-                    <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
-                    </SliderItem>
-                </React.Fragment>
+                <SliderItem>  
+                    <Card>
+                        <img src={ReviewFoto}/>
+                        <div>
+                            <h3>Nome do fulano</h3>
+                            <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
+                        </div>
+                    </Card>
+                </SliderItem>
+                <SliderItem>  
+                    <Card>
+                        <img src={ReviewFoto}/>
+                        <div>
+                            <h3>Nome do fulano</h3>
+                            <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
+                        </div>
+                    </Card>
+                </SliderItem>
+                <SliderItem>  
+                    <Card>
+                        <img src={ReviewFoto}/>
+                        <div>
+                            <h3>Nome do fulano</h3>
+                            <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
+                        </div>
+                    </Card>
+                </SliderItem>
             </StyledSlider>
         </ReviewsContainer>
       );
@@ -71,73 +76,48 @@ const ReviewsContainer = styled.div`
     
 `
 const StyledSlider = styled(Slider)`
-    display: block;
+    /* display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%; 
+    width: 100%; */
 `
 const SliderItem = styled.div`
-    background-color:lightsalmon;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding:20px;
+    background-color:#6459a5;
+    border-radius:90px;
+    border: 2px solid #4cd8d6;
     margin:20px;
-    img{
-        width:100px;
+    padding:10px;
+    max-width:450px;
+    @media(max-width: 600px) {
+        border-radius:90px;
+        max-width:340px;
     }
 `
-
-
-
-//const ComentsContainer = styled.div`
-//    display:flex;
-//     flex-direction:column;
-//     align-items:center; 
-//     padding:30px 50px 100px 50px;
-//    width:1300px;
-//     h2{
-//         color:#4bbcba;
-//         padding:0 0 40px 30px;
-//     }
-//`
-
-//const SCardDeck = styled(CardDeck)`
-//    max-width:1200px;
-//     /* background-color:blue; */
-//     justify-content:space-evenly;
-//`
-
-// const SCard = styled(Card)`
-//     display:flex;
-//     flex-direction:row;
-//     align-items: center;
-//     justify-content: space-between;
-//     background: #6459a5;
-//     border: 2px solid #4cd8d6;
-//     border-radius: 150px;
-//     max-width: 580px;
-//     min-width: 460px;
-//     margin:15px;
-// `
-
-// const SCardImg = styled(CardImg)` 
-//     width: 150px;
-//     background:#2e8180;
-//     border-radius: 80px;
-//     border:2px solid #2b2450;
-//     margin: 7px 7px;
-// `
-
-// const SCardBody = styled(CardBody)`
-//     margin: 0 10px;
-//     padding:15px 5px 15px 40px;
-// `
-
-// const SCardTitle = styled(CardTitle)`
-//     color:#1d1b25;
-//     font-weight:bold;
-// `
-// const SCardText = styled(CardText)`
-//     text-indent:16px;
-// `
+const Card = styled.div`
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    img{
+        width:130px;
+        height:130px;
+        border: 2px solid #4cd8d6;
+        border-radius:80px;
+        margin-right:7px;
+    }
+    div{
+        h3{
+            font-size:20px;
+        }
+    }
+    @media(max-width: 600px) {
+        img{
+        width:80px;
+        height:80px;
+        margin-bottom:10px;
+    }
+        div{
+        text-align: left;
+        max-width:180px;
+        }
+    }
+`

@@ -25,24 +25,30 @@ const Header = ()=>{
     
     return(   
         <SHeader>
-            <Teste>
-                <Navbar expand="md"> {/* < nav >*/}
-                    <NavbarBrand tag={RRDNavLink} to="/">
+                <SNavbar expand="sm" dark className="navbar-style" style={{ flexWrap:'nowrap' }}>
+                    <SNavbarBrand tag={RRDNavLink} to="/">
                         <img src={NerdBoxLogo} alt="Nerd Box Logo"/>
-                    </NavbarBrand>
-                    <NavbarToggler onClick={toggle} />
-                    <Collapse isOpen={isOpen} navbar>
-                        <Nav className="mr-auto" navbar> {/* < ul >*/}
-                            <NavItem> {/* < li >*/}
-                                <NavLink exact tag={RRDNavLink} to="/" activeClassName="active">Home</NavLink> {/* < a href >*/}
-                            </NavItem>
-                            <NavItem>
-                                <NavLink exact tag={RRDNavLink} to="/sobre" activeClassName="active">Sobre</NavLink>
-                            </NavItem>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </Teste>
+                    </SNavbarBrand>
+                    <Container>
+                        <NavbarToggler onClick={toggle} />
+                        <Collapse isOpen={isOpen} navbar>
+                            <Nav className="mr-auto" navbar>
+                                <NavItem>
+                                    <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Home</SNavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Nossos Produtos</SNavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Comentários</SNavLink> 
+                                </NavItem>
+                                <NavItem>
+                                    <SNavLink exact tag={RRDNavLink} to="/sobre" activeClassName="active">Sobre</SNavLink>
+                                </NavItem>
+                            </Nav>
+                        </Collapse>
+                    </Container>    
+                </SNavbar>
         </SHeader>
     );
 };
@@ -51,33 +57,36 @@ export default Header;
 
 const SHeader = styled.header`
     background-color:#2b2450;
-    width:100vw;
-//     display:flex;
-//     justify-content:center;
+    border-bottom:1px solid #4bbcba;
+    padding:10px;
 `
-
-// const SNavbar = styled(Navbar)`
-//     /* background-color:#2b2450; */
-//     /* width:1200px; */
-// `
-// const SNavbarBrand = styled(NavbarBrand)`
-//     img{
-//         width: 80px; 
-//     }
-// `
-// const SNavLink = styled(NavLink)`
-//     color:#4bbcba !important; 
-//     font-weight:bolder;
-//     text-transform:uppercase;
-//     font-size:18px;
-//     padding:5px 20px !important;
-//     margin:0 5px;
-//     border-radius:20px;
-
-//     :hover{
-//         background-color:#42396e;
-//     }
-//     /* &.active{
-//         color:blue !important;
-//     } */
-// `
+const SNavbar = styled(Navbar)`
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+`
+const Container = styled.div`
+    margin:0 50px;
+`
+const SNavbarBrand = styled(NavbarBrand)`
+    margin:0 50px;    
+    img{
+        width: 80px; 
+    }
+`
+const SNavLink = styled(NavLink)`
+    color:#4bbcba !important; 
+    font-weight:bolder;
+    text-transform:uppercase;
+    font-size:18px;
+    padding:5px 10px !important;
+    margin:0 5px;
+    
+    :hover{
+        border-radius:20px;
+        background-color:#42396e;
+    }
+    &.active{
+        /* color:blue !important; */
+    }
+`

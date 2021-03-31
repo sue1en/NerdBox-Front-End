@@ -1,16 +1,15 @@
 import React, {useCallback, useEffect, useState } from 'react';
 import { getServiceAllBoxes } from '../services/boxes.service.js';
-import { Col, Row} from 'reactstrap'
+import { Container, Col, Row} from 'reactstrap'
 import styled from 'styled-components'
 import Teste from '../assets/estilo-teste.js';
 
 //______ COMPONENTES______
 // import IntroCarousel from '../components/intro-carousel';
-import MemberReviews from '../components/coments';
+import Banner from '../components/banner';
 import ProductBoxes from '../components/boxes';
+import MemberReviews from '../components/coments';
 import Loading_component from '../components/loading';
-
-import ImageIntro02 from '../assets/images/intro/img-test-2.jpg';
 
 const Home = () => {
 
@@ -38,34 +37,43 @@ const Home = () => {
    );
 
    const MapBoxes = (boxes) => boxes.map((item, index) => (
-      <Col md="3" xl="3" sm="12" xs="12" key={index} className="mb-4">
+      <Col md="4" xl="4" sm="12" xs="12" key={index} className="mb-4">
          <ProductBoxes item={{...item, status: true }} />
       </Col>
    ))
 
 
    return(
-         <Teste>
-               {/* <img  width="1000vw" src={ImageIntro02}/> */}
-                  <Content/>
-                  <div>
-                     {loading ? <Loading_component />  
-                              : (
-                                 <Row>
-                                       {MapBoxes(boxes)}
-                                 </Row>
-                     )}
-                  </div>
-                  <MemberReviews/>
-         </Teste>
+      <div>
+         <Banner/>
+         <BoxesContainer>
+            <h2>Escolha a Sua Box</h2>
+            <Row>   
+               {loading ? <Loading_component/> : MapBoxes(boxes)}
+            </Row>
+         </BoxesContainer >
+         <ReviewsContainer>
+            <MemberReviews/>
+         </ReviewsContainer>
+      </div>
    );
 };
 
 export default Home;
 
-const Content = styled.img`
-   background-image: url(${ImageIntro02});
-   background-repeat: no-repeat;
-   height:100px;
-   border:none;
+const BoxesContainer = styled.div`
+   margin:70px 60px 60px 60px;
+   h2{
+      margin:60px 0 60px 0;
+      text-transform:uppercase;
+      /* font-weight:bold; */
+      text-align: center;
+      color:#2B2450;
+   }
+   @media(max-width: 500px) {
+   }
+`
+const ReviewsContainer = styled.div`
+   background-color:#292F36;
+   padding:100px;
 `

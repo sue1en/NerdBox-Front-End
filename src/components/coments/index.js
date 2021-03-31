@@ -72,14 +72,13 @@ const MemberReviews = () => {
 export default MemberReviews;
 
 const ReviewsContainer = styled.div`
-    padding:30px;
     
 `
 const StyledSlider = styled(Slider)`
-    /* display: block;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%; */
+    width: 100%;
 `
 const SliderItem = styled.div`
     background-color:#6459a5;
@@ -94,9 +93,9 @@ const SliderItem = styled.div`
     }
 `
 const Card = styled.div`
-    display:flex;
+    /* display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:center; */
     img{
         width:130px;
         height:130px;
@@ -115,9 +114,5 @@ const Card = styled.div`
         height:80px;
         margin-bottom:10px;
     }
-        div{
-        text-align: left;
-        max-width:180px;
-        }
     }
 `

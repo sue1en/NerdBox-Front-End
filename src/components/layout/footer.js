@@ -26,7 +26,6 @@ const SFooter = styled.footer`
     background-color:#2b2450;
     border-top:1px solid #4bbcba;
     padding:10px;
-    width:100vw;
     display:flex;
     justify-content:space-between;
     align-items:center;

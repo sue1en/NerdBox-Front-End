@@ -61,14 +61,14 @@ const SHeader = styled.header`
    padding:10px;
 `
 const SNavbar = styled(Navbar)`
-   display:flex;
+   /* display:flex;
    flex-direction:row;
-   justify-content:space-between;
+   justify-content:space-between; */
 `
 const Container = styled.div`
    margin:0 50px;
    @media(max-width: 500px) {
-      justify-content:flex-end;
+      /* justify-content:flex-end; */
 
    }
 `

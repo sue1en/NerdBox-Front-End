@@ -19,8 +19,8 @@ export default Layout;
 
 const Main = styled.main`
     flex:1;
-    background-color: #1d1b25;
-    width:100vw
+    /* width:100vw; */
+    background-color:#f5f5f5;
 `
 
 /* >>> Minhas cores <<<

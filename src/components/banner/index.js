@@ -19,10 +19,10 @@ const Banner = () => {
 export default Banner
 
 const Container = styled.div`
-  height:80vh;
+  height:auto;
   background-image: url(${BannerBackgroung});
   background-color: #1d1b25;
-  @media(max-width: 600px) {
+  @media(max-width: 800px) {
     height:auto;
   }
 `
@@ -30,7 +30,8 @@ const Content = styled.div`
   display: flex;
   
   img{
-    height:80vh;
+    width:70%;
+    height:auto;
   }
   h4{
     align-self: center;
@@ -41,7 +42,7 @@ const Content = styled.div`
     text-justify:newspaper;
 
   }
-  @media(max-width: 600px) {
+  @media(max-width: 800px) {
     flex-direction:column;
       align-items: center;
 

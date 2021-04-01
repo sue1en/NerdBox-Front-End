@@ -13,8 +13,7 @@ import {
 import '../../assets/css/style.css'
 
 //_____Images_____
-import NerdBoxLogo from '../../assets/images/logos/logo-header.png';
-import Teste from '../../assets/estilo-teste.js';
+import NerdBoxLogo from '../../assets/images/logos/main-logo.svg';
 
 
 const Header = ()=>{ 
@@ -25,28 +24,28 @@ const Header = ()=>{
    
    return(   
       <SHeader>
-         <SNavbar expand="sm" dark className="navbar-style" style={{ flexWrap:'nowrap' }}>
+         <SNavbar expand="md" dark className="navbar-style" fixed="top">
             <SNavbarBrand tag={RRDNavLink} to="/">
                <img src={NerdBoxLogo} alt="Nerd Box Logo"/>
             </SNavbarBrand>
             <Container>
                <NavbarToggler onClick={toggle} />
-               <Collapse isOpen={isOpen} navbar>
+               <SCollapse isOpen={isOpen} navbar>
                      <Nav className="mr-auto" navbar>
-                        <NavItem>
+                        <SNavItem>
                            <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Home</SNavLink>
-                        </NavItem>
-                        <NavItem>
+                        </SNavItem>
+                        <SNavItem>
                            <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Nossos Produtos</SNavLink>
-                        </NavItem>
-                        <NavItem>
+                        </SNavItem>
+                        <SNavItem>
                            <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Comentários</SNavLink> 
-                        </NavItem>
-                        <NavItem>
+                        </SNavItem>
+                        <SNavItem>
                            <SNavLink exact tag={RRDNavLink} to="/sobre" activeClassName="active">Sobre</SNavLink>
-                        </NavItem>
+                        </SNavItem>
                      </Nav>
-               </Collapse>
+               </SCollapse>
             </Container>    
          </SNavbar>
       </SHeader>
@@ -56,14 +55,11 @@ const Header = ()=>{
 export default Header;
 
 const SHeader = styled.header`
-   background-color:#2b2450;
-   border-bottom:1px solid #4bbcba;
-   padding:10px;
+   padding:25px;
 `
 const SNavbar = styled(Navbar)`
-   /* display:flex;
-   flex-direction:row;
-   justify-content:space-between; */
+   background-color:#5C22B3;
+   padding:0;
 `
 const Container = styled.div`
    margin:0 50px;
@@ -72,25 +68,29 @@ const Container = styled.div`
 
    }
 `
+const SCollapse = styled(Collapse)`
+   flex-grow: 0;
+`
+
 const SNavbarBrand = styled(NavbarBrand)`
    margin:0 50px;    
    img{
-      width: 80px; 
+      width: 180px; 
+      margin:0;    
    }
 `
+const SNavItem = styled(NavItem)`
+   margin:0;
+   padding:0;
+`
+
 const SNavLink = styled(NavLink)`
-   color:#4bbcba !important; 
-   font-weight:bolder;
-   text-transform:uppercase;
+   color:#f6f6f6 !important; 
+   /* font-weight:bold; */
    font-size:18px;
    padding:5px 10px !important;
    margin:0 5px;
-   
    :hover{
-      border-radius:20px;
-      background-color:#42396e;
-   }
-   &.active{
-      /* color:blue !important; */
+      background-color:#491C8D;
    }
 `

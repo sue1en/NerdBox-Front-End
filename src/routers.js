@@ -18,15 +18,15 @@ import Error404 from './views/errors/404.js';
 const Routers = () => {
    return(
       <Router>
-         <Switch>
-            <Layout>
+         <Layout>
+            <Switch>
                <Route exact path='/' component={Home}/>
                <Route exact path='/boxes/:id' component={BoxesPage}/>
                <Route exact path='/sobre' component={Sobre}/>
-               <Router to='/error/404' component={Error404}/>
+               <Route exact to='/error/404' component={Error404}/>
                <Redirect from='*' to='/error/404' />
-            </Layout>
-         </Switch>
+            </Switch>
+         </Layout>
       </Router>
    )
 };

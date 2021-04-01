@@ -6,15 +6,12 @@ import styled from 'styled-components';
 
 
 const MembersTable = ({ membros, update }) => {   
-   const { id: id_caixa } = useParams();
-   const [modal, setModal] = useState({
-      isOpen: false,
-      data:null
-   });
+   // const { id: id_caixa } = useParams();
+   const [modal, setModal] = useState({ isOpen: false, data:null });
 
    const deleteSubscription = () => {
-      if (modal.data.id) {
-         deleteServiceUsers(id_caixa, modal.data.id)
+      if ( modal.data.id ) {
+         deleteServiceUsers( modal.data.id)
          .then(() => {
             alert(`Membro foi excluido com sucesso!`)
             update(true)
@@ -50,7 +47,7 @@ const MembersTable = ({ membros, update }) => {
                               <td>{assinantesArray.user.email}</td>
                               <td>{new Date(assinantesArray.user.birth_date).toLocaleDateString()}</td>
                               <td>
-                                 <SButton size="sm" color="danger" onClick={() => toggleModal(assinantesArray.id)}>Excluir</SButton>
+                                 <SButton size="sm" color="danger" onClick={() => toggleModal(assinantesArray)}>Excluir</SButton>
                               </td>
                            </tr>
                         ))}
@@ -77,10 +74,9 @@ const MembersTable = ({ membros, update }) => {
 
 export default MembersTable;
 
-//deleteSubscription(assinantesArray.id)
 
 const TableContainer = styled.div`
-   background-color: #eee;
+   background-color: #fff;
    border-radius: 20px;
    margin:30px 60px;
    padding:20px;

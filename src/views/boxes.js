@@ -9,7 +9,6 @@ import Subscription from '../components/subscription';
 import MembersTable from '../components/table';
 import Loading_component from '../components/loading';
 import ImgBox from '../assets/images/boxes/box-detalhes.jpg';
-import Teste from '../assets/estilo-teste.js';
 
 
 
@@ -51,7 +50,7 @@ const BoxesPage = (props) => {
       <Produto>
          <h2>{boxDetalhe.name || ''}</h2>
          <div>
-            <img src={ImgBox} width="70%" alt='foto demosntrativa da box'/>
+            <img src={ImgBox} width="60%" alt='foto demosntrativa da box'/>
             <p>{boxDetalhe.description || ''}</p>
          </div>
       </Produto>
@@ -59,13 +58,13 @@ const BoxesPage = (props) => {
 
 
    const Menu = () => (
-      <Navbar color="light" light expand="md mb-4">
+      <SNavbar light>
          <Nav className="mr-auto" navbar>
-            <Button onClick={() => SetSubs(!isSubscription)} color={ !isSubscription ? "primary" : "secondary" } size="sm">
+            <Button size="md" block onClick={() => SetSubs(!isSubscription)} color={ !isSubscription ? "info" : "secondary" } size="sm">
                { !isSubscription ? "Incrições" : "Lista de Inscritos" }
             </Button>
          </Nav>
-      </Navbar>
+      </SNavbar>
    )
 
    const montarTela = (boxDetalhe) => (
@@ -92,27 +91,37 @@ const BoxesPage = (props) => {
 export default BoxesPage;
 
 const Produto = styled.div`
-   width:60%;
+   margin:50px;
+   padding:20px;
+   background-color:#ffffff;
+   border-radius:10px;
+   color:#575757;
+   box-shadow: 5px 5px 5px #e5e5e5;
+   
+   div{
+      display:flex;
+      img{
+         border-radius:10px;
+      }
+      p{
+         margin:0 40px;
+      }
+   }
+   @media(max-width: 800px) {
+      margin:20px;
+      h2{
+         text-align:center;
+      }
+      div{
+         flex-direction:column;
+         align-items:center;
+         p{
+            margin:0 10px;
+         }
+      }
+  }
 `
+const SNavbar = styled(Navbar)`
+   padding:10px 65px;
 
-// const ProductBoxContainer = styled.div`
-//     background-color:#eee;
-//     margin:30px 60px;
-//     padding:20px;
-//     border-radius:10px;
-//     h2{
-//         text-transform:uppercase;
-//         font-weight:bolder;
-//         color:#1d1b25;
-//         font-size:26px;
-//     }
-// `
-// const ProductBoxDetalhe = styled.div`
-//     display:flex;
-//     img{
-//         border-radius:10px;
-//     }
-//     p{
-//         margin:0 0 0 20px;
-//     }
-// `
+`

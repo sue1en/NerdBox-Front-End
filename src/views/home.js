@@ -2,7 +2,6 @@ import React, {useCallback, useEffect, useState } from 'react';
 import { getServiceAllBoxes } from '../services/boxes.service.js';
 import { Container, Col, Row} from 'reactstrap'
 import styled from 'styled-components'
-import Teste from '../assets/estilo-teste.js';
 
 //______ COMPONENTES______
 // import IntroCarousel from '../components/intro-carousel';
@@ -47,7 +46,7 @@ const Home = () => {
       <div>
          <Banner/>
          <BoxesContainer>
-            <h2>Escolha a Sua Box</h2>
+            <h2>Escolha a sua Box</h2>
             <Row>   
                {loading ? <Loading_component/> : MapBoxes(boxes)}
             </Row>
@@ -65,15 +64,20 @@ const BoxesContainer = styled.div`
    margin:70px 60px 60px 60px;
    h2{
       margin:60px 0 60px 0;
-      text-transform:uppercase;
+      /* text-transform:uppercase; */
       /* font-weight:bold; */
       text-align: center;
-      color:#2B2450;
+      color:#575757;
+      font-size:22px;
    }
    @media(max-width: 500px) {
    }
 `
 const ReviewsContainer = styled.div`
-   background-color:#292F36;
+   /* background-color:#292F36; */
+   background-color:#252525;
    padding:100px;
+   @media(max-width: 600px) {
+      padding:50px;
+   }
 `

@@ -15,104 +15,111 @@ import ReviewFoto from '../../assets/images/review-foto.png'
 
 const MemberReviews = () => {
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 600,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        initialSlide: 1,
-        responsive: [
-            {
-              breakpoint: 992,
-              settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1
-              }
+   const settings = {
+      dots: true,
+      infinite: true,
+      speed: 600,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      initialSlide: 1,
+      responsive: [
+         {
+            breakpoint: 992,
+            settings: {
+               slidesToShow: 1,
+               slidesToScroll: 1
             }
-          ]
-      };
+         }
+         ]
+   };
 
-      return (
-          <ReviewsContainer>
-            <h2> Responsive </h2>
-            <StyledSlider { ...settings }>
-                <SliderItem>  
-                    <Card>
-                        <img src={ReviewFoto}/>
-                        <div>
-                            <h3>Nome do fulano</h3>
-                            <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
-                        </div>
-                    </Card>
-                </SliderItem>
-                <SliderItem>  
-                    <Card>
-                        <img src={ReviewFoto}/>
-                        <div>
-                            <h3>Nome do fulano</h3>
-                            <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
-                        </div>
-                    </Card>
-                </SliderItem>
-                <SliderItem>  
-                    <Card>
-                        <img src={ReviewFoto}/>
-                        <div>
-                            <h3>Nome do fulano</h3>
-                            <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
-                        </div>
-                    </Card>
-                </SliderItem>
-            </StyledSlider>
-        </ReviewsContainer>
-      );
+   return (
+      <ReviewsContainer>
+         <h2> Responsive </h2>
+         <Slider { ...settings }>     
+            <SliderItem>
+               <Card>
+                  <img src={ReviewFoto}/>
+                  <div>
+                     <h3>Nome do fulano</h3>
+                     <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
+                  </div>
+               </Card>
+            </SliderItem>
+            <SliderItem>
+               <Card>
+                  <img src={ReviewFoto}/>
+                  <div>
+                     <h3>Nome do fulano</h3>
+                     <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
+                  </div>
+               </Card>
+            </SliderItem>
+            <SliderItem>
+               <Card>
+                  <img src={ReviewFoto}/>
+                  <div>
+                     <h3>Nome do fulano</h3>
+                     <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
+                  </div>
+               </Card>
+            </SliderItem>
+         </Slider>
+      </ReviewsContainer>
+   );
 };
 
 export default MemberReviews;
 
 const ReviewsContainer = styled.div`
-    
-`
-const StyledSlider = styled(Slider)`
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+   
 `
 const SliderItem = styled.div`
-    background-color:#6459a5;
-    border-radius:90px;
-    border: 2px solid #4cd8d6;
-    margin:20px;
-    padding:10px;
-    max-width:450px;
-    @media(max-width: 600px) {
-        border-radius:90px;
-        max-width:340px;
-    }
+   @media(max-width: 600px) {
+
+   }
 `
 const Card = styled.div`
-    /* display:flex;
-    justify-content:center;
-    align-items:center; */
-    img{
-        width:130px;
-        height:130px;
-        border: 2px solid #4cd8d6;
-        border-radius:80px;
-        margin-right:7px;
-    }
-    div{
-        h3{
-            font-size:20px;
-        }
-    }
-    @media(max-width: 600px) {
-        img{
-        width:80px;
-        height:80px;
-        margin-bottom:10px;
-    }
-    }
+   background-color:#f6f6f6;
+   border-radius:10px;
+   display:flex;
+   align-items:center;
+   margin:15px 60px;
+   img{
+      width:135px;
+      height:auto;
+      background-color:#ccc;
+      border-radius: 10px 0 0 10px;
+   }
+   div{
+      color:#6b6b6b;
+      padding:15px 25px;
+      width:300px;
+      h3{
+         font-size:20px;
+         font-weight:bold;
+      }
+      p{
+         margin:0;
+      }
+   }
+
+   @media(max-width: 600px) {
+      margin:15px 25px;
+      flex-direction:column;
+      align-items:center;
+      img{
+         border-radius: 10px 10px 0 0;
+         width:fit-content;
+         height:auto;
+
+      }
+      div{
+         width:auto;
+         h3{
+         }
+         p{
+         }
+      }
+   }
 `

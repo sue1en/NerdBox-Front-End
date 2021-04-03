@@ -1,14 +1,14 @@
 import React, {useCallback, useEffect, useState } from 'react';
 import { getServiceAllBoxes } from '../services/boxes.service.js';
-import { Container, Col, Row} from 'reactstrap'
+import { Col, Row} from 'reactstrap'
 import styled from 'styled-components'
 
 //______ COMPONENTES______
-// import IntroCarousel from '../components/intro-carousel';
 import Banner from '../components/banner';
 import ProductBoxes from '../components/boxes';
 import MemberReviews from '../components/coments';
 import Loading_component from '../components/loading';
+
 
 const Home = () => {
 

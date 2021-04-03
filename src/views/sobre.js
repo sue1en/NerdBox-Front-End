@@ -19,7 +19,7 @@ const Sobre = () => {
                <div>
                   <h5>Felipe Siqueira</h5>
                   <h6><strong>Back-End</strong></h6>
-                  <p>html 5, css 3, React, Reactstrap, React Router Dom, Styled Components.
+                  <p>Javascript, NodeJS, ExpressJS, MySQL, Sequelize.
                   </p>
                </div>
             </Developers>

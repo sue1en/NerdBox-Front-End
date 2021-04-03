@@ -5,12 +5,13 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import styled from 'styled-components'
 
 
-const Subscription = ({ id, update}) => {
+const Subscription = ({ id, update, isSubscription }) => {
    const [newMemberForm, setNewMemberForm] = useState({});
    const [memberForm, setMemberForm] = useState({});
 
 
    //função para alterar o estado dos inputs
+
    const handlerChangeNew = (e) => {
       setNewMemberForm({
          ...newMemberForm,
@@ -24,12 +25,21 @@ const Subscription = ({ id, update}) => {
       })
    };
 
+
+
    const submitForm = () => {
-      createServiceSubscription(id, memberForm)
+      const nMemberForm = {
+         ...memberForm,
+         name: memberForm.name.toUpperCase(),
+         email: memberForm.email.toLowerCase()
+      }
+
+      createServiceSubscription(id, nMemberForm)
          .then(() =>{
-               alert(`Cadastro do aluno realizado com sucesso!!`)
+               alert(`Cadastro realizado com sucesso!!`)
                setMemberForm({});
                update(true)
+               isSubscription(false)
          })
          .catch((error) => {
                console.log('Temos um erro!!! Usuário não existe')
@@ -38,7 +48,22 @@ const Subscription = ({ id, update}) => {
    }
 
    const submitNewMemberForm = () => {
-      createServiceUsers(id, newMemberForm);
+      const nNewMemberForm = {
+         ...newMemberForm,
+         name: newMemberForm.name.toUpperCase(),
+         email: newMemberForm.email.toLowerCase()
+      }
+      createServiceUsers(id, nNewMemberForm)
+         .then(() =>{
+            alert(`Cadastro realizado com sucesso!!`)
+               setNewMemberForm({});
+               update(true)
+               isSubscription(false)
+         })
+         .catch((error) => {
+            console.log('Temos um erro!!!')
+            alert('Cadastro não realizado.')
+         })
    }
 
    return(
@@ -47,7 +72,7 @@ const Subscription = ({ id, update}) => {
             <h4>Já sou membro.</h4>
             <FormGroup>
                <Label for="email-2">Email</Label>
-               <SInput type="text" id="email-2" name="email" value={memberForm.email || ""} onChange={handlerChange} placeholder="Insira seu Email" />
+               <SInput type="text" id="email-2" name="email" value={memberForm.email || ""} onChange={handlerChange} placeholder="Insira seu Email" className="text-lowercase"/>
             </FormGroup>
             <FormGroup>
                <SButton onClick={submitForm}>Inscreva-se</SButton>
@@ -57,11 +82,11 @@ const Subscription = ({ id, update}) => {
             <h4>Ainda não sou membro.</h4>
             <FormGroup>
                <Label for="name">Nome:</Label>
-               <SInput type="text" id="name" name="name" value={newMemberForm.name || ""} onChange={handlerChangeNew} placeholder="Insira seu nome"/>
+               <SInput type="text" id="name" name="name" value={newMemberForm.name || ""} onChange={handlerChangeNew} placeholder="Insira seu nome" className="text-uppercase"/>
             </FormGroup>
             <FormGroup>
                <Label for="email">Email:</Label>
-               <SInput type="text" id="email" name="email" value={newMemberForm.email || ""} onChange={handlerChangeNew} placeholder="Inseira seu Email"/>
+               <SInput type="text" id="email" name="email" value={newMemberForm.email || ""} onChange={handlerChangeNew} placeholder="Insira seu Email" className="text-lowercase"/>
             </FormGroup>
             <FormGroup>
                <Label for="nascimento">Data de Nascimento:</Label>

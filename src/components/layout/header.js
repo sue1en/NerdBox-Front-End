@@ -25,7 +25,7 @@ const Header = ()=>{
    return(   
       <SHeader>
          <SNavbar expand="md" dark className="navbar-style" fixed="top">
-            <SNavbarBrand tag={RRDNavLink} to="/">
+            <SNavbarBrand>
                <img src={NerdBoxLogo} alt="Nerd Box Logo"/>
             </SNavbarBrand>
             <Container>
@@ -34,12 +34,6 @@ const Header = ()=>{
                      <Nav className="mr-auto" navbar>
                         <SNavItem>
                            <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Home</SNavLink>
-                        </SNavItem>
-                        <SNavItem>
-                           <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Nossos Produtos</SNavLink>
-                        </SNavItem>
-                        <SNavItem>
-                           <SNavLink exact tag={RRDNavLink} to="/" activeClassName="active">Comentários</SNavLink> 
                         </SNavItem>
                         <SNavItem>
                            <SNavLink exact tag={RRDNavLink} to="/sobre" activeClassName="active">Sobre</SNavLink>
@@ -62,17 +56,16 @@ const SNavbar = styled(Navbar)`
    padding:0;
 `
 const Container = styled.div`
-   margin:0 50px;
+   margin:0 60px;
    @media(max-width: 500px) {
-      /* justify-content:flex-end; */
 
    }
 `
 const SCollapse = styled(Collapse)`
-   flex-grow: 0;
 `
 
 const SNavbarBrand = styled(NavbarBrand)`
+   flex:1;
    margin:0 50px;    
    img{
       width: 180px; 
@@ -86,7 +79,6 @@ const SNavItem = styled(NavItem)`
 
 const SNavLink = styled(NavLink)`
    color:#f6f6f6 !important; 
-   /* font-weight:bold; */
    font-size:18px;
    padding:5px 10px !important;
    margin:0 5px;

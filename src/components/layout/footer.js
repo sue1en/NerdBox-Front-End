@@ -57,7 +57,7 @@ const BrandLogo = styled.div`
     flex-direction:column;
     align-items:flex-end;
     img{
-        height:40px;
+        height:30px;
         width:auto;
     }
     p {

@@ -11,8 +11,6 @@ import Loading_component from '../components/loading';
 import ImgBox from '../assets/images/boxes/box-detalhes.jpg';
 
 
-
-
 const BoxesPage = (props) => {
    const { id } = useParams();
    const { history } = props;
@@ -20,7 +18,7 @@ const BoxesPage = (props) => {
    const [loading, setLoading] = useState(false);
    const [boxDetalhe, setBoxDetalhe] = useState({});
    const [update, setUpdate] = useState(false);
-   const [ isSubscription, SetSubs] = useState(false);
+   const [ isSubscription, setSubs] = useState(false);
 
    const getBoxDetalhe = useCallback(async () => {
       try {
@@ -58,12 +56,13 @@ const BoxesPage = (props) => {
 
 
    const Menu = () => (
-      <SNavbar light>
-         <Nav className="mr-auto" navbar>
-            <Button size="md" block onClick={() => SetSubs(!isSubscription)} color={ !isSubscription ? "info" : "secondary" } size="sm">
-               { !isSubscription ? "Incrições" : "Lista de Inscritos" }
-            </Button>
-         </Nav>
+      <SNavbar >
+         <div className="Info">
+            {isSubscription ? "Faça Aqui sua inscrição." : "Veja a lista de inscritos." }
+         </div>
+         <Button onClick={() => setSubs(!isSubscription)} color={ !isSubscription ? "info" : "primary" } size="md">
+            { !isSubscription ? "Inscreva-se" : "Lista de Inscritos" }
+         </Button>
       </SNavbar>
    )
 
@@ -73,7 +72,7 @@ const BoxesPage = (props) => {
          {Menu()}
          {
             isSubscription 
-               ? (<Subscription id={id} update={setUpdate}/>)
+               ? (<Subscription id={id} update={setUpdate} isSubscription={setSubs}/>)
                : (<MembersTable membros={boxDetalhe.assinantes} update={setUpdate}/>)
          }
       </div>
@@ -123,5 +122,12 @@ const Produto = styled.div`
 `
 const SNavbar = styled(Navbar)`
    padding:10px 65px;
+   background-color:#312E3F;
+   border-bottom:1px solid #3E444A;
+   display:flex;
+   .Info{
+      color:#f6f6f6;
+      flex:1;
+   }
 
 `

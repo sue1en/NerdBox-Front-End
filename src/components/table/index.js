@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { deleteServiceUsers } from '../../services/users.service.js';
 import { Table, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import styled from 'styled-components';
-
+import { BiTrash } from 'react-icons/bi'
 
 const MembersTable = ({ membros, update }) => {   
    // const { id: id_caixa } = useParams();
@@ -31,28 +31,28 @@ const MembersTable = ({ membros, update }) => {
       <TableContainer>
          {membros && membros.length ? (
             <div>
-                  <Table responsive striped size="sm">
+                  <STable responsive striped dark size="sm">
                      <thead>
-                        <tr>
-                           <th>Nome:</th>
-                           <th>Email:</th>
+                        <TableTr>
+                           <th>Nome</th>
+                           <th>Email</th>
                            <th>Nascimento</th>
-                           <th>Cancelar Inscrição</th>
-                        </tr>
+                           <th>Cancelar</th>
+                        </TableTr>
                      </thead>
                      <tbody>
                         {membros && membros.map((assinantesArray,index) => (
-                           <tr key={index}>
+                           <TableTr key={index}>
                               <td>{assinantesArray.user.name}</td>
                               <td>{assinantesArray.user.email}</td>
                               <td>{new Date(assinantesArray.user.birth_date).toLocaleDateString()}</td>
                               <td>
-                                 <SButton size="sm" color="danger" onClick={() => toggleModal(assinantesArray)}>Excluir</SButton>
+                                 <SButton link size="sm" onClick={() => toggleModal(assinantesArray)}><BiTrash size="20"/></SButton>
                               </td>
-                           </tr>
+                           </TableTr>
                         ))}
                      </tbody>
-                  </Table>
+                  </STable>
 
                   <Modal isOpen={modal.isOpen} toggle={toggleModal}>
                   <ModalHeader toggle={toggleModal}>Cancelar Assinatura</ModalHeader>
@@ -76,16 +76,43 @@ export default MembersTable;
 
 
 const TableContainer = styled.div`
-   background-color: #fff;
-   border-radius: 20px;
-   margin:30px 60px;
-   padding:20px;
+   background-color: #312E3F;
+   div{
+      padding:20px 40px;
+   }
 `
+
+const STable = styled(Table)`
+
+`
+const TableTr = styled.tr`
+
+   th{
+      padding:10px 15px;
+      background-color:#120D1A;
+      border:none;
+      :nth-child(n){min-width:200px;}
+      :nth-child(1){min-width:400px;}
+      :nth-child(4){min-width:100px; text-align: center;}
+   }
+
+   td{
+      padding:5px 15px;
+      :nth-child(1){ text-transform: uppercase;}
+      :nth-child(3){ text-transform: lowercase;}
+      :nth-child(4){ text-align: center;}
+   }
+
+`
+
 const SButton = styled.button`
-   font-weight:bold;
-   padding:5px 20px;
    border:0;
-   border-radius:5px;
-   background:#dd3b3b;
+   background:#C82333;
    color:#fff;
+   padding:2px 25px 5px 25px;
+   border-radius:5px;
+   :hover{
+      background:#f5f5f5;
+      color:#C82333;
+   }
 `

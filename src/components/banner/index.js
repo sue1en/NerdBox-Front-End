@@ -47,7 +47,7 @@ const Content = styled.div`
       align-items: center;
 
     img{
-      width:100vw;
+      width:95vw;
       height:auto;
   }
   }

@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { getServiceBoxDetalhe } from '../services/boxes.service.js';
-import { Navbar, Nav, Button } from 'reactstrap';
+import { Navbar, Button } from 'reactstrap';
 import styled from 'styled-components';
 
 //______ COMPONENTES______

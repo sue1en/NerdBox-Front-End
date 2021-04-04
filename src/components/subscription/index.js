@@ -135,7 +135,6 @@ const SInput = styled(Input)`
    :hover{
       border:1px solid #0D8080;
       box-shadow: inset 0 0 4px #0D8080;
-
    }
 `
 const SButton = styled(Button)`

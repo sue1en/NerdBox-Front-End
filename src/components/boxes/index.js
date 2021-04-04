@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Card, CardBody, CardImg, CardTitle, CardText, Button } from 'reactstrap'
+import { Card, CardBody, CardImg } from 'reactstrap'
 
 // ______Images_____
 import BoxesImage from '../../assets/images/boxes/modelbox.jpg'
@@ -51,7 +51,6 @@ const SCardBody = styled(CardBody)`
    h5{
       color:#f6f6f6;
       font-weight:normal;
-      /* text-transform:uppercase; */
    }
    h6{
       font-size:22px;

@@ -64,8 +64,6 @@ const BoxesContainer = styled.div`
    margin:70px 60px 60px 60px;
    h2{
       margin:60px 0 60px 0;
-      /* text-transform:uppercase; */
-      /* font-weight:bold; */
       text-align: center;
       color:#575757;
       font-size:22px;
@@ -74,7 +72,6 @@ const BoxesContainer = styled.div`
    }
 `
 const ReviewsContainer = styled.div`
-   /* background-color:#292F36; */
    background-color:#252525;
    padding:100px;
    @media(max-width: 600px) {

@@ -31,7 +31,7 @@ const MembersTable = ({ membros, update }) => {
       <TableContainer>
          {membros && membros.length ? (
             <div>
-                  <STable responsive striped dark size="sm">
+                  <Table responsive striped dark size="sm">
                      <thead>
                         <TableTr>
                            <th>Nome</th>
@@ -52,7 +52,7 @@ const MembersTable = ({ membros, update }) => {
                            </TableTr>
                         ))}
                      </tbody>
-                  </STable>
+                  </Table>
 
                   <Modal isOpen={modal.isOpen} toggle={toggleModal}>
                   <ModalHeader toggle={toggleModal}>Cancelar Assinatura</ModalHeader>
@@ -81,10 +81,6 @@ const TableContainer = styled.div`
       padding:20px 40px;
    }
 `
-
-const STable = styled(Table)`
-
-`
 const TableTr = styled.tr`
 
    th{
@@ -95,7 +91,6 @@ const TableTr = styled.tr`
       :nth-child(1){min-width:400px;}
       :nth-child(4){min-width:100px; text-align: center;}
    }
-
    td{
       padding:5px 15px;
       :nth-child(1){ text-transform: uppercase;}
@@ -104,7 +99,6 @@ const TableTr = styled.tr`
    }
 
 `
-
 const SButton = styled.button`
    border:0;
    background:#C82333;

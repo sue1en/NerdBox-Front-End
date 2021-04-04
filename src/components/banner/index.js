@@ -52,9 +52,3 @@ const Content = styled.div`
   }
   }
 `
-
-// const Content = styled.img`
-// background-repeat: no-repeat;
-// height:100px;
-// border:none;
-// `

@@ -56,10 +56,10 @@ const BrandLogo = styled.div`
     display:flex;
     flex-direction:column;
     align-items:flex-end;
-    /* img{
+    img{
         height:30px;
         width:auto;
-    } */
+    }
     p {
         font-size:14px;
         color:#f6f6f6;

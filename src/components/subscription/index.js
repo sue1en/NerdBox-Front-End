@@ -26,7 +26,6 @@ const Subscription = ({ id, update, isSubscription }) => {
    };
 
 
-
    const submitForm = () => {
       const nMemberForm = {
          ...memberForm,
@@ -71,8 +70,8 @@ const Subscription = ({ id, update, isSubscription }) => {
          <SForm>
             <h4>Já sou membro.</h4>
             <FormGroup>
-               <Label for="email-2">Email</Label>
-               <SInput type="text" id="email-2" name="email" value={memberForm.email || ""} onChange={handlerChange} placeholder="Insira seu Email" className="text-lowercase"/>
+               <Label for="email">Email</Label>
+               <SInput type="text" id="email" name="email" value={memberForm.email || ""} onChange={handlerChange} placeholder="Insira seu Email" className="text-lowercase"/>
             </FormGroup>
             <FormGroup>
                <SButton onClick={submitForm}>Inscreva-se</SButton>

@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import Banner from '../components/banner';
 import ProductBoxes from '../components/boxes';
 import MemberReviews from '../components/coments';
-import Loading_component from '../components/loading';
+import LoadingComponent from '../components/loading';
 
 
 const Home = () => {
@@ -48,7 +48,7 @@ const Home = () => {
          <BoxesContainer>
             <h2>Escolha a sua Box</h2>
             <Row>   
-               {loading ? <Loading_component/> : MapBoxes(boxes)}
+               {loading ? <LoadingComponent/> : MapBoxes(boxes)}
             </Row>
          </BoxesContainer >
          <ReviewsContainer>

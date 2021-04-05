@@ -2,7 +2,7 @@ import React from 'react';
 import { Spinner } from 'reactstrap';
 import styled from 'styled-components';
 
-const Loading_component = (props) => {
+const LoadingComponent = (props) => {
 
     return(
         <LoadingContainer>
@@ -11,7 +11,7 @@ const Loading_component = (props) => {
     )
 };
 
-export default Loading_component;
+export default LoadingComponent;
 
 const LoadingContainer = styled.div`
     display:flex;

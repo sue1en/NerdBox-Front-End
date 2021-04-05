@@ -7,7 +7,7 @@ import styled from 'styled-components';
 //______ COMPONENTES______
 import Subscription from '../components/subscription';
 import MembersTable from '../components/table';
-import Loading_component from '../components/loading';
+import LoadingComponent from '../components/loading';
 import ImgBox from '../assets/images/boxes/box-detalhes.jpg';
 
 
@@ -81,7 +81,7 @@ const BoxesPage = (props) => {
 
    return(
       loading 
-         ? <Loading_component/> 
+         ? <LoadingComponent/> 
          : montarTela (boxDetalhe)
       
    );

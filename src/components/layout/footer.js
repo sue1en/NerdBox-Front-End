@@ -4,7 +4,7 @@ import {
     NavLink,
 } from 'reactstrap';
 import { AiOutlineFacebook, AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
-// import LogoFooter from '../../assets/images/logos/logo-pb.svg';
+import LogoFooter from '../../assets/images/logos/logo-pb.svg';
 
 const Footer = () => (
         <SFooter>
@@ -14,7 +14,7 @@ const Footer = () => (
                 <SNavLink tag={Link} to="#"><AiOutlineWhatsApp/>Whatsapp</SNavLink>
             </SocialMidias>
             <BrandLogo>
-                {/* <img src={LogoFooter} alt="Nerd Box Logo"/> */}
+                <img src={LogoFooter} alt="Nerd Box Logo"/>
                 <p>Todos os direitos reservados.</p>
             </BrandLogo>
         </SFooter>

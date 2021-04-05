@@ -39,7 +39,7 @@ const Home = () => {
       <Col md="4" xl="4" sm="12" xs="12" key={index} className="mb-4">
          <ProductBoxes item={{...item, status: true }} />
       </Col>
-   ))
+   ));
 
 
    return(

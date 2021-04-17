@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import {
-  Card, Col, CardBody,CardHeader,
-  Button, FormGroup, Label,Input, CardFooter
+  Card, Col, CardBody,CardHeader,Alert,
+  Button, FormGroup, Label,Input, CardFooter,
 } from 'reactstrap';
 import { signInAction } from '../../store/auth/auth.action';
 import { Sign } from '../../assets/styled'
@@ -11,6 +11,12 @@ import { Sign } from '../../assets/styled'
 const SignIn = (data) => {
     const dispatch = useDispatch()
     const [form, setForm] = useState({});
+
+    const error = useSelector(state => state.auth.error)
+    const [visible, setVisible] = useState(true);
+    const onDismiss = () => setVisible(false);
+
+    const closeError = () => setVisible(false);
 
     const handlerChangeNew = (e) => {
         setForm({
@@ -23,9 +29,18 @@ const SignIn = (data) => {
         dispatch(signInAction(form))
     }
 
+    useEffect(() => {
+        setVisible(error.length > 0)
+        setTimeout(() => setVisible(false), 5000);
+    }, [error])
+
     return (
     <Sign>
         <Col sm={12} md={4} lg={5}>
+            <Alert color="danger" isOpen={visible} toggle={closeError}>
+                <div><strong>OPS! </strong> Aconteceu um erro.</div>
+                <small>Verifique usuário e senha</small>
+            </Alert>
             <Card>
                 <CardHeader tag="h4" className="text-center">Login</CardHeader>
                 <CardBody>

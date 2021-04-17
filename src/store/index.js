@@ -4,9 +4,11 @@ import thunk from 'redux-thunk'
 
 // importação dos reducers
 import SignReducer from "./auth/auth.reducer"
+import BoxesReducer from "./box/box.reducer"
 
 const reducers = combineReducers({
     auth: SignReducer,
+    boxes: BoxesReducer,
 })
 
 // middlewares de redux

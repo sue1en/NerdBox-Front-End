@@ -10,10 +10,12 @@ import {
    NavItem,
    NavLink,
    Container,
-   Tooltip
+   Tooltip,
+   UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu
 } from 'reactstrap';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { isAuthenticated } from '../../config/auth';
+import { logoutAction } from '../../store/auth/auth.action';
 import '../../assets/css/style.css'
 
 //_____Images_____
@@ -21,7 +23,7 @@ import NerdBoxLogo from '../../assets/images/logos/main-logo.svg';
 
 
 const Header = (props)=>{
-
+   const dispatch = useDispatch()
    const [isOpen, setIsOpen] = useState(false);
    const [tooltipOpen, setTooltipOpen] = useState(false);
 
@@ -29,7 +31,11 @@ const Header = (props)=>{
    const toggle = () => setIsOpen(!isOpen);
 
    const usuario = useSelector(state => state.auth.usuario)
-   console.log(usuario)
+
+   const logout = () => {
+      dispatch(logoutAction())
+  }
+
    return(   
       <SHeader>
          <Container>
@@ -54,6 +60,20 @@ const Header = (props)=>{
                      ) : ""}
                   </Nav>
                </SCollapse>
+               {isAuthenticated() ? (
+                  <Nav>
+                  <UncontrolledDropdown nav inNavbar>
+                     <DropdownToggle nav caret>
+                        {usuario.name}
+                     </DropdownToggle>
+                     <DropdownMenu>
+                        <DropdownItem>Perfil</DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem onClick={logout}>Sair</DropdownItem>
+                     </DropdownMenu>
+                  </UncontrolledDropdown>
+                  </Nav>
+               ) : ""}
             </SNavbar>
          </Container>    
       </SHeader>

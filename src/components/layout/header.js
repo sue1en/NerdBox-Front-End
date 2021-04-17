@@ -12,19 +12,24 @@ import {
    Container,
    Tooltip
 } from 'reactstrap';
+import { useSelector } from 'react-redux'
+import { isAuthenticated } from '../../config/auth';
 import '../../assets/css/style.css'
 
 //_____Images_____
 import NerdBoxLogo from '../../assets/images/logos/main-logo.svg';
 
 
-const Header = ()=>{ 
+const Header = (props)=>{
+
    const [isOpen, setIsOpen] = useState(false);
    const [tooltipOpen, setTooltipOpen] = useState(false);
 
    const toggleTooltip = () => setTooltipOpen(!tooltipOpen);
    const toggle = () => setIsOpen(!isOpen);
-   
+
+   const usuario = useSelector(state => state.auth.usuario)
+   console.log(usuario)
    return(   
       <SHeader>
          <Container>
@@ -42,6 +47,11 @@ const Header = ()=>{
                      <NavItem>
                         <SNavLink exact tag={RRDNavLink} to="/sobre" activeClassName="active">Sobre</SNavLink>
                      </NavItem>
+                     {!isAuthenticated() ? (
+                        <NavItem>
+                           <SNavLink exact tag={RRDNavLink} to="/signin" activeClassName="active">SignIn / SignUp</SNavLink>
+                        </NavItem>
+                     ) : ""}
                   </Nav>
                </SCollapse>
             </SNavbar>

@@ -3,16 +3,22 @@ import { Link } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
 import {
   Card, Col, CardBody,CardHeader,Alert,
-  Button, FormGroup, Label,Input, CardFooter,
+  Button, FormGroup, Label,Input, CardFooter, Spinner,
 } from 'reactstrap';
 import { signInAction } from '../../store/auth/auth.action';
 import { Sign } from '../../assets/styled'
 
 const SignIn = (data) => {
     const dispatch = useDispatch()
-    const [form, setForm] = useState({});
+    const [form, setForm] = useState({
+        user: "",
+        password: ""
+    });
 
+    
     const error = useSelector(state => state.auth.error)
+    const loading = useSelector(state => state.auth.loading)
+
     const [visible, setVisible] = useState(true);
     const onDismiss = () => setVisible(false);
 
@@ -34,6 +40,8 @@ const SignIn = (data) => {
         setTimeout(() => setVisible(false), 5000);
     }, [error])
 
+    const isNotValid = () => form.user.length === 0 || form.password.length === 0
+
     return (
     <Sign>
         <Col sm={12} md={4} lg={5}>
@@ -46,14 +54,16 @@ const SignIn = (data) => {
                 <CardBody>
                     <FormGroup>
                         <Label for="Email">Email:</Label>
-                        <Input type="text" id="user" name="user" value={form.user || ""} onChange={handlerChangeNew} placeholder="Insira seu Email" className="text-lowercase"/>
+                        <Input disabled={loading} type="text" id="user" name="user" value={form.user || ""} onChange={handlerChangeNew} placeholder="Insira seu Email" className="text-lowercase"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="email">Senha:</Label>
-                        <Input type="password" id="password" name="password" value={form.password || ""} onChange={handlerChangeNew} placeholder="Insira sua Senha"/>
+                        <Input disabled={loading} type="password" id="password" name="password" value={form.password || ""} onChange={handlerChangeNew} placeholder="Insira sua Senha"/>
                     </FormGroup>
                     <FormGroup>
-                        <Button color={'primary'} size="md" block onClick={submitForm}>Entrar</Button>
+                        <Button color={isNotValid() || loading ? 'secondary' : 'primary'} disabled={isNotValid()} size="md" block onClick={submitForm}>
+                            {loading ? (<><Spinner size="sm" color="light" /> Carregando...</>) : "Enviar"}
+                        </Button>
                     </FormGroup>
                 </CardBody>
                 <CardFooter className="text-muted">

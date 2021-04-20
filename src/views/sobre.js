@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 
 const Sobre = () => {
+   document.title = "Nerdbox - Sobre"
    return(
       <SobreContainer>
          <div>

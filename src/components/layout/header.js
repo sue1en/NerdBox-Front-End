@@ -16,6 +16,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import { isAuthenticated } from '../../config/auth';
 import { logoutAction } from '../../store/auth/auth.action';
+import history from '../../config/history';
 import '../../assets/css/style.css'
 
 //_____Images_____
@@ -31,6 +32,7 @@ const Header = (props)=>{
    const toggle = () => setIsOpen(!isOpen);
 
    const usuario = useSelector(state => state.auth.usuario)
+   const isAdmin = useSelector(state => state.auth.admin)
 
    const logout = () => {
       dispatch(logoutAction())
@@ -53,6 +55,11 @@ const Header = (props)=>{
                      <NavItem>
                         <SNavLink exact tag={RRDNavLink} to="/sobre" activeClassName="active">Sobre</SNavLink>
                      </NavItem>
+                     {isAdmin ? (
+                        <NavItem>
+                           <SNavLink exact tag={RRDNavLink} to="/gerenciar" activeClassName="active">AdminPanel</SNavLink>
+                        </NavItem>
+                     ) : ""}
                      {!isAuthenticated() ? (
                         <NavItem>
                            <SNavLink exact tag={RRDNavLink} to="/signin" activeClassName="active">SignIn / SignUp</SNavLink>
@@ -67,7 +74,7 @@ const Header = (props)=>{
                         {usuario.name}
                      </DropdownToggle>
                      <DropdownMenu>
-                        <DropdownItem>Perfil</DropdownItem>
+                        <DropdownItem onClick={() => history.push('/profile')}>Perfil</DropdownItem>
                         <DropdownItem divider />
                         <DropdownItem onClick={logout}>Sair</DropdownItem>
                      </DropdownMenu>

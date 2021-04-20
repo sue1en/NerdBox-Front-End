@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { getServiceBoxDetalhe } from '../services/boxes.service.js';
 import { Navbar, Button } from 'reactstrap';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 //______ COMPONENTES______
 import Subscription from '../components/subscription';
@@ -12,6 +13,7 @@ import ImgBox from '../assets/images/boxes/box-detalhes.jpg';
 
 
 const BoxesPage = (props) => {
+   const dispatch = useDispatch()
    const { id } = useParams();
    const { history } = props;
 
@@ -55,26 +57,26 @@ const BoxesPage = (props) => {
    )};
 
 
-   const Menu = () => (
-      <SNavbar >
-         <div className="Info">
-            {isSubscription ? "Faça Aqui sua inscrição." : "Veja a lista de inscritos." }
-         </div>
-         <Button onClick={() => setSubs(!isSubscription)} color={ !isSubscription ? "info" : "primary" } size="md">
-            { !isSubscription ? "Inscreva-se" : "Lista de Inscritos" }
-         </Button>
-      </SNavbar>
-   )
+   // const Menu = () => (
+   //    <SNavbar >
+   //       <div className="Info">
+   //          {isSubscription ? "Faça Aqui sua inscrição." : "Veja a lista de inscritos." }
+   //       </div>
+   //       <Button onClick={() => setSubs(!isSubscription)} color={ !isSubscription ? "info" : "primary" } size="md">
+   //          { !isSubscription ? "Inscreva-se" : "Lista de Inscritos" }
+   //       </Button>
+   //    </SNavbar>
+   // )
 
    const montarTela = (boxDetalhe) => (
       <div>
          {printBoxDetalhe(boxDetalhe)}
-         {Menu()}
-         {
+         {/* {Menu()} */}
+         {/* {
             isSubscription 
                ? (<Subscription id={id} update={setUpdate} isSubscription={setSubs}/>)
                : (<MembersTable membros={boxDetalhe.assinantes} update={setUpdate}/>)
-         }
+         } */}
       </div>
    )
 

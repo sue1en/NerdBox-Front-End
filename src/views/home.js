@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState } from 'react';
 import { getServiceAllBoxes } from '../services/boxes.service.js';
+import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row} from 'reactstrap'
 import styled from 'styled-components'
 
@@ -8,32 +9,19 @@ import Banner from '../components/banner';
 import ProductBoxes from '../components/boxes';
 import MemberReviews from '../components/coments';
 import LoadingComponent from '../components/loading';
-
+import { getBoxAll } from '../store/box/box.action';
 
 const Home = () => {
+   const dispatch = useDispatch()
+   document.title = "Nerdbox - Home"
 
-   const [boxes, setBoxes] = useState([]);
-   const [loading, setLoading] = useState(false);
-   // const [hasError, setError] = useState(false);
-   
-   const getBoxes = useCallback(() => {
-      setLoading(true)
-      getServiceAllBoxes()
-         .then(res => {
-            setBoxes(res.data)
-            setLoading(false)
-         })
-         .catch(error => {
-            // setError(true)
-            // console.log('Temos um erro', err)
-            setLoading(false)
-         })
-   }, []);
+   const boxes =  useSelector(state => state.boxes.all)
+   const loading =  useSelector(state => state.boxes.loading)
+   // const [loading, setLoading] = useState(false);
 
    useEffect(()=>{
-      getBoxes();
-   },[getBoxes]
-   );
+      dispatch(getBoxAll());
+   },[]);
 
    const MapBoxes = (boxes) => boxes.map((item, index) => (
       <Col md="4" xl="4" sm="12" xs="12" key={index} className="mb-4">
@@ -41,14 +29,19 @@ const Home = () => {
       </Col>
    ));
 
-
+   if(loading) {
+      return <LoadingComponent />
+   }
+   
    return(
       <div>
          <Banner/>
          <BoxesContainer>
             <h2>Escolha a sua Box</h2>
-            <Row>   
-               {loading ? <LoadingComponent/> : MapBoxes(boxes)}
+            <Row>
+               {!loading && boxes.length === 0 ? "Nâo tem Caixas disponiveis" : MapBoxes(boxes)}
+               {/* {boxes.length === 0 ? "Não tem boxes disponiveis" : loading ? <LoadingComponent/> : MapBoxes(boxes)}    */}
+               {/* {loading ? <LoadingComponent/> : MapBoxes(boxes)} */}
             </Row>
          </BoxesContainer >
          <ReviewsContainer>

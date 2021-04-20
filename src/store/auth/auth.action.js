@@ -1,16 +1,19 @@
 import { saveAuth, removeToken } from '../../config/auth';
-import { authService } from '../../services/auth.service';
+import { authService, registerUserService } from '../../services/auth.service';
 import history from '../../config/history';
 import http from '../../config/http';
 
 export const TYPES = {
+    SIGN_LOADING: "SIGN_LOADING",
     SIGN_IN: "SIGN_IN",
+    SIGN_UP: "SIGN_UP",
     SIGN_OUT: "SIGN_OUT",
     SIGN_ERROR: "SIGN_ERROR",
 }
 
 export const signInAction = (data) => {
     return async (dispatch) => {
+        dispatch({type: TYPES.SIGN_LOADING, status: true})
         try {
             const result = await authService(data);
             if(result.data) {
@@ -28,7 +31,26 @@ export const signInAction = (data) => {
         
     };
 }
-
+export const signUpAction = (data) => {
+    return async (dispatch) => {
+        dispatch({type: TYPES.SIGN_LOADING, status: true})
+        try {
+            const result = await registerUserService(data);
+            // if(result.data) {
+            //     saveAuth(result.data)
+            //     http.defaults.headers['token'] = result.data.token;
+            // }
+            dispatch({
+                type: TYPES.SIGN_UP,
+                data: result.data
+            })
+            history.push('/')
+        } catch (error) {
+            dispatch({ type: TYPES.SIGN_ERROR, data: error })
+        }
+        
+    };
+}
 export const logoutAction = (data) => {
 
     return async (dispatch) => {

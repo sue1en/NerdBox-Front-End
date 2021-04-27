@@ -1,15 +1,15 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import { getServiceBoxDetalhe } from '../services/boxes.service.js';
+import { getBoxDetalhe } from '../store/box/box.action';
 import { Navbar, Button } from 'reactstrap';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
 
 //______ COMPONENTES______
 import Subscription from '../components/subscription';
 import MembersTable from '../components/table';
 import LoadingComponent from '../components/loading';
 import ImgBox from '../assets/images/boxes/box-detalhes.jpg';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 const BoxesPage = (props) => {
@@ -18,41 +18,43 @@ const BoxesPage = (props) => {
    const { history } = props;
 
    const [loading, setLoading] = useState(false);
-   const [boxDetalhe, setBoxDetalhe] = useState({});
+   // const [boxDetalhe, setBoxDetalhe] = useState({});
    const [update, setUpdate] = useState(false);
    const [ isSubscription, setSubs] = useState(false);
 
-   const getBoxDetalhe = useCallback(async () => {
-      try {
-         setLoading(true);
-         const res = await getServiceBoxDetalhe(id);
-         setTimeout(() => {
-            setBoxDetalhe(res.data);
-            setLoading(false);
-         }, 500)
-         } catch (error) {
-            console.log("##", error, "##")
-            // setError(true)
-            history.push('/?error=404')
-         }
-      }, [id, history]
-   );
+   const isAdmin = useSelector(state => state.auth.admin)
+   const detalhes = useSelector(state => state.boxes.detalhes)
+   // const getBoxDetalhe = useCallback(async () => {
+   //    try {
+   //       setLoading(true);
+   //       const res = await getServiceBoxDetalhe(id);
+   //       setTimeout(() => {
+   //          setBoxDetalhe(res.data);
+   //          setLoading(false);
+   //       }, 500)
+   //       } catch (error) {
+   //          console.log("##", error, "##")
+   //          // setError(true)
+   //          history.push('/?error=404')
+   //       }
+   //    }, [id, history]
+   // );
 
    useEffect(()=>{
-      getBoxDetalhe()
+      dispatch(getBoxDetalhe(id))
       setUpdate(false)
-   },[getBoxDetalhe, update]
+   },[]
    );
 
-   const printBoxDetalhe = (boxDetalhe) => {
-      console.log(boxDetalhe)
+   const printBoxDetalhe = (detalhes) => {
       return(
       <Produto>
-         <h2>{boxDetalhe.name || ''}</h2>
+         <h2>{detalhes.name || ''}</h2>
          <div>
             <img src={ImgBox} width="60%" alt='foto demosntrativa da box'/>
-            <p>{boxDetalhe.description || ''}</p>
+            <p>{detalhes.description || ''}</p>
          </div>
+         <Button color="primary">Quero Assinar</Button>
       </Produto>
    )};
 
@@ -68,15 +70,10 @@ const BoxesPage = (props) => {
    //    </SNavbar>
    // )
 
-   const montarTela = (boxDetalhe) => (
+   const montarTela = (detalhes) => (
       <div>
-         {printBoxDetalhe(boxDetalhe)}
-         {/* {Menu()} */}
-         {/* {
-            isSubscription 
-               ? (<Subscription id={id} update={setUpdate} isSubscription={setSubs}/>)
-               : (<MembersTable membros={boxDetalhe.assinantes} update={setUpdate}/>)
-         } */}
+         {printBoxDetalhe(detalhes)}
+         {isAdmin ? <MembersTable membros={detalhes.assinantes} update={setUpdate}/> : "" }
       </div>
    )
 
@@ -84,7 +81,7 @@ const BoxesPage = (props) => {
    return(
       loading 
          ? <LoadingComponent/> 
-         : montarTela (boxDetalhe)
+         : montarTela (detalhes)
       
    );
 };

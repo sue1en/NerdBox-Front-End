@@ -44,7 +44,7 @@ export const signUpAction = (data) => {
                 type: TYPES.SIGN_UP,
                 data: result.data
             })
-            history.push('/')
+            history.push('/signin')
         } catch (error) {
             dispatch({ type: TYPES.SIGN_ERROR, data: error })
         }

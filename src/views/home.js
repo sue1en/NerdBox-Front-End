@@ -1,5 +1,4 @@
-import React, {useCallback, useEffect, useState } from 'react';
-import { getServiceAllBoxes } from '../services/boxes.service.js';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row} from 'reactstrap'
 import styled from 'styled-components'
@@ -21,7 +20,7 @@ const Home = () => {
 
    useEffect(()=>{
       dispatch(getBoxAll());
-   },[]);
+   },[dispatch]);
 
    const MapBoxes = (boxes) => boxes.map((item, index) => (
       <Col md="4" xl="4" sm="12" xs="12" key={index} className="mb-4">

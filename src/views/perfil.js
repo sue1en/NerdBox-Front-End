@@ -1,14 +1,15 @@
 import { useState } from "react"
 import { Button, Row, Col, FormGroup, Label, Input } from 'reactstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from "styled-components";
 import { updateProfileService } from '../services/auth.service'
 
-const Profile = () => {
+const Profile = (id) => {
     document.title = "NerdBox - Perfil"
-
+    const dispatch = useDispatch()
     const perfil = useSelector(state => state.auth.usuario)
     const [form, setForm] = useState({ ...perfil })
+
     const handleChange = (e) => {
         setForm({
             ...form,
@@ -28,7 +29,7 @@ const Profile = () => {
             email: form.email.toLowerCase(),
             birth_date: formatDate(form.birth_date)
         }
-       console.log(nform)
+       dispatch(updateProfileService(perfil.id, nform))
     }
 
 
@@ -60,7 +61,9 @@ const Profile = () => {
                     </FormGroup>
                 </Col>
             </BoxInscricao>
+           
         </ProfileUpdate>
+        
         </>
     )
 }

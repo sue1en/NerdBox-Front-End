@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import { deleteServiceUsers } from '../../services/users.service.js';
-import { Table, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Table } from 'reactstrap';
 import styled from 'styled-components';
-import { BiTrash } from 'react-icons/bi'
 
 const MembersTable = ({ membros, update }) => {   
-   // const { id: id_caixa } = useParams();
+   const { id: id_caixa } = useParams();
    const [modal, setModal] = useState({ isOpen: false, data:null });
 
    const deleteSubscription = () => {
@@ -37,33 +36,18 @@ const MembersTable = ({ membros, update }) => {
                            <th>Nome</th>
                            <th>Email</th>
                            <th>Nascimento</th>
-                           <th>Cancelar</th>
                         </TableTr>
                      </thead>
                      <tbody>
                         {membros && membros.map((assinantesArray,index) => (
                            <TableTr key={index}>
-                              <td>{assinantesArray.user.name}</td>
-                              <td>{assinantesArray.user.email}</td>
-                              <td>{new Date(assinantesArray.user.birth_date).toLocaleDateString()}</td>
-                              <td>
-                                 <SButton link size="sm" onClick={() => toggleModal(assinantesArray)}><BiTrash size="20"/></SButton>
-                              </td>
+                              <td>{assinantesArray.member.name}</td>
+                              <td>{assinantesArray.member.email}</td>
+                              <td>{new Date(assinantesArray.member.birth_date).toLocaleDateString()}</td>
                            </TableTr>
                         ))}
                      </tbody>
                   </Table>
-
-                  <Modal isOpen={modal.isOpen} toggle={toggleModal}>
-                  <ModalHeader toggle={toggleModal}>Cancelar Assinatura</ModalHeader>
-                  <ModalBody>
-                  Deseja Cancelar a Assinatura de {modal?.data?.user?.name}
-                  </ModalBody>
-                  <ModalFooter>
-                     <Button color="primary" onClick={deleteSubscription}>SIM</Button>{' '}
-                     <Button color="secondary" onClick={toggleModal}>NÃO</Button>
-                  </ModalFooter>
-               </Modal>
             </div>
          ) : (
             <div>Ainda não existem membros cadastrados nessa Box.</div>

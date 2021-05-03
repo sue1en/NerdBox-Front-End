@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Card, CardBody, CardImg } from 'reactstrap'
-
 // ______Images_____
 import BoxesImage from '../../assets/images/boxes/modelbox.jpg'
 
-
 const ProductBoxes = ({ item: { id, name, price } }) => {
-
+   
    return(
          <SCard>
             <SLink to={`/boxes/${id}`}>

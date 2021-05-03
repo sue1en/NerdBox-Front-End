@@ -3,49 +3,62 @@ import { useParams } from 'react-router';
 import { getBoxDetalhe } from '../store/box/box.action';
 import { Navbar, Button } from 'reactstrap';
 import styled from 'styled-components';
+import { AiFillCheckSquare, AiFillCloseSquare } from 'react-icons/ai'
 
 //______ COMPONENTES______
-import Subscription from '../components/subscription';
 import MembersTable from '../components/table';
 import LoadingComponent from '../components/loading';
 import ImgBox from '../assets/images/boxes/box-detalhes.jpg';
+import Swal from 'sweetalert2';
 import { useSelector, useDispatch } from 'react-redux';
+import { createSubscription, removeSubscription } from '../store/assinante/assinante.action';
 
 
 const BoxesPage = (props) => {
    const dispatch = useDispatch()
    const { id } = useParams();
-   const { history } = props;
+   // const { history } = props;
 
    const [loading, setLoading] = useState(false);
-   // const [boxDetalhe, setBoxDetalhe] = useState({});
    const [update, setUpdate] = useState(false);
-   const [ isSubscription, setSubs] = useState(false);
+   // const [ isSubscription, setSubs] = useState(false);
 
    const isAdmin = useSelector(state => state.auth.admin)
    const detalhes = useSelector(state => state.boxes.detalhes)
-   // const getBoxDetalhe = useCallback(async () => {
-   //    try {
-   //       setLoading(true);
-   //       const res = await getServiceBoxDetalhe(id);
-   //       setTimeout(() => {
-   //          setBoxDetalhe(res.data);
-   //          setLoading(false);
-   //       }, 500)
-   //       } catch (error) {
-   //          console.log("##", error, "##")
-   //          // setError(true)
-   //          history.push('/?error=404')
-   //       }
-   //    }, [id, history]
-   // );
+   const assinaturas = useSelector(state => state.boxes.detalhes.assinantes)
+   const registered = useSelector(state => state.boxes.detalhes.registered)
+
+   const toogleSubcription = (assinaturas) => {
+      if(registered) {
+         dispatch(removeSubscription(id, assinaturas[0].id))
+         .then(() => {
+            Swal.fire({
+                icon: 'success',
+                title: `Aluno Removido do Curso`,
+                showConfirmButton: false,
+                showCloseButton: true,
+            })
+        })
+        .catch(erro => console.log('ERRO!'))
+      } else {
+         dispatch(createSubscription(id))
+             .then(() => {
+                 Swal.fire({
+                     icon: 'success',
+                     title: `Aluno Cadastrado com sucesso !`,
+                     showConfirmButton: false,
+                     showCloseButton: true,
+                 })
+             })
+             .catch(erro => console.log('ERRO!'))
+     }
+   }
 
    useEffect(()=>{
       dispatch(getBoxDetalhe(id))
       setUpdate(false)
-   },[]
-   );
-
+   },[]);
+   
    const printBoxDetalhe = (detalhes) => {
       return(
       <Produto>
@@ -54,22 +67,11 @@ const BoxesPage = (props) => {
             <img src={ImgBox} width="60%" alt='foto demosntrativa da box'/>
             <p>{detalhes.description || ''}</p>
          </div>
-         <Button color="primary">Quero Assinar</Button>
+         <Button onClick={() => toogleSubcription(assinaturas)} color={!registered ? "primary" : "danger"} size="sm">{!registered ?(<><AiFillCheckSquare /> Quero Assinar </>) :(<><AiFillCloseSquare /> Cancelar</>) }</Button>
       </Produto>
    )};
 
-
-   // const Menu = () => (
-   //    <SNavbar >
-   //       <div className="Info">
-   //          {isSubscription ? "Faça Aqui sua inscrição." : "Veja a lista de inscritos." }
-   //       </div>
-   //       <Button onClick={() => setSubs(!isSubscription)} color={ !isSubscription ? "info" : "primary" } size="md">
-   //          { !isSubscription ? "Inscreva-se" : "Lista de Inscritos" }
-   //       </Button>
-   //    </SNavbar>
-   // )
-
+   
    const montarTela = (detalhes) => (
       <div>
          {printBoxDetalhe(detalhes)}
@@ -77,11 +79,10 @@ const BoxesPage = (props) => {
       </div>
    )
 
-
    return(
       loading 
          ? <LoadingComponent/> 
-         : montarTela (detalhes)
+         : montarTela(detalhes)
       
    );
 };

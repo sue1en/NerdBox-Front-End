@@ -40,12 +40,12 @@ const SignUp = (data) => {
         setVisible(error.length > 0)
         setTimeout(() => setVisible(false), 5000);
     }, [error])
+
     useEffect(() => {
         if(registered){
             showSuccess(true)
             setForm({})
         }
-        setTimeout(() => setVisible(false), 5000);
     }, [registered])
 
     const formatDate = (birth_date) => {

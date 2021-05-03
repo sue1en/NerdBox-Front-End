@@ -1,4 +1,5 @@
-import { getServiceAllBoxes, postBox, getServiceBoxDetalhe } from "../../services/boxes.service"
+import { getServiceAllBoxes, postBoxService, getServiceBoxDetalhe, removeBoxService, editBoxService } from "../../services/boxes.service"
+import Assinantes from "../../views/assinantes"
 
 export const TYPES = {
     BOX_LOADING: "BOX_LOADING",
@@ -22,12 +23,10 @@ export const getBoxAll = () => {
     }
 }
 export const getBoxDetalhe = (id) => {
-    return async (dispatch, getState) => {
-        dispatch({type: TYPES.BOX_LOADING, status: true})
-        const { auth } = getState()
+    return async (dispatch) => {
         try {
             const res =  await getServiceBoxDetalhe(id);
-            // res.data.registered = res.data.assinantes.some(item => item.email === auth.usuario.email) // ainda da false
+            res.data.registered = res.data.assinantes.length > 0;
             dispatch({
                 type: TYPES.BOXE_DETALHE,
                 data: res.data
@@ -42,7 +41,31 @@ export const createBox = (form) => {
     return async (dispatch) => {
         dispatch({type: TYPES.BOX_LOADING, status: true})
         try {
-            const cadastrarBox = await postBox(form)
+            await postBoxService(form)
+            dispatch(getBoxAll())
+        } catch (error) {
+            dispatch({type: TYPES.BOX_LOADING, status: false})
+        }
+    }
+}
+export const editBoxAction = ({id, name, description, price}) => {
+    return async (dispatch) => {
+        dispatch({type: TYPES.BOX_LOADING, status: true})
+        try {
+            const data = { name, description, price }
+            await editBoxService(id, data)
+            dispatch(getBoxAll())
+        } catch (error) {
+            dispatch({type: TYPES.BOX_LOADING, status: false})
+        }
+    }
+}
+
+export const deleteBoxAction = (id) => {
+    return async (dispatch) => {
+        dispatch({type: TYPES.BOX_LOADING, status: true})
+        try {
+            await removeBoxService(id)
             dispatch(getBoxAll())
         } catch (error) {
             dispatch({type: TYPES.BOX_LOADING, status: false})

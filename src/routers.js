@@ -18,6 +18,7 @@ import BoxesPage from './views/boxes';
 import Sobre from './views/sobre';
 import Profile from './views/perfil';
 import Gerenciar from './views/gerenciar';
+import Assinantes from './views/assinantes';
 import Error404 from './views/errors/404.js';
 
 import { isAuthenticated } from './config/auth';
@@ -54,6 +55,7 @@ const Routers = () => {
 
                {/* ADMIN */}
                <AdminRoute exact path='/gerenciar' admin={isAdmin} component={Gerenciar}/>
+               <AdminRoute exact path='/assinantes' admin={isAdmin} component={Assinantes}/>
                {/* -------- */}
 
                <Route exact to='/error/404' component={Error404}/>

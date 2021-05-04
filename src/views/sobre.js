@@ -12,15 +12,12 @@ const Sobre = () => {
             <h4>Alunos:</h4>
             <Developers>
                <div>
-                  <h5>Suelen Batista</h5>
+                  <h5>Felipe Siqueira & Suelen Batista</h5>
+                  <h6>Tecnologias utilizadas</h6>
+                  <h6><strong>Back-End</strong></h6>
+                  <p>Javascript, NodeJS, ExpressJS, MySQL, Sequelize, Joi, JWT, Md5</p>
                   <h6><strong>Front-End</strong></h6>
                   <p>html 5, css 3, React, Reactstrap, React Router Dom, Styled Components.
-                  </p>
-               </div>
-               <div>
-                  <h5>Felipe Siqueira</h5>
-                  <h6><strong>Back-End</strong></h6>
-                  <p>Javascript, NodeJS, ExpressJS, MySQL, Sequelize.
                   </p>
                </div>
             </Developers>
@@ -51,9 +48,9 @@ const Developers = styled.div`
    padding:0 !important;
    div{
       background-color:#f6f6f6;
-      max-width:280px;
       padding:15px;
       margin:10px;
+      flex: 1
    }
    @media(max-width: 600px) {
       flex-direction:column;

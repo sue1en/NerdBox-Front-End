@@ -10,6 +10,7 @@ import MemberReviews from '../components/coments';
 import LoadingComponent from '../components/loading';
 import { getBoxAll } from '../store/box/box.action';
 
+
 const Home = () => {
    const dispatch = useDispatch()
    document.title = "Nerdbox - Home"
@@ -37,11 +38,9 @@ const Home = () => {
          <Banner/>
          <BoxesContainer>
             <h2>Escolha a sua Box</h2>
-            <Row>
-               {!loading && boxes.length === 0 ? "Nâo tem Caixas disponiveis" : MapBoxes(boxes)}
-               {/* {boxes.length === 0 ? "Não tem boxes disponiveis" : loading ? <LoadingComponent/> : MapBoxes(boxes)}    */}
-               {/* {loading ? <LoadingComponent/> : MapBoxes(boxes)} */}
-            </Row>
+         <Row>
+            {!loading && boxes.length === 0 ? "Nâo tem Caixas disponiveis" : MapBoxes(boxes)}
+         </Row>
          </BoxesContainer >
          <ReviewsContainer>
             <MemberReviews/>

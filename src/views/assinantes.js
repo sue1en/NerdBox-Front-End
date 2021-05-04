@@ -8,19 +8,24 @@ const Assinantes = () => {
     document.title = 'Nerdbox - Assinantes'
     const dispatch = useDispatch()
     const assinantes = useSelector(state => state.subs.all)
-    const boxes = useSelector(state => state.subs.all)
 
-    const [modal, setModal] = useState(false);
+    const [modal, setModal] = useState({
+        status: false,
+        data: {}
+    });
 
-    const toggle = () => setModal(!modal);
+    const toggle = (data = {}) => setModal({
+        status: !modal.status,
+        data: data
+    })
 
     useEffect(() => {
         dispatch(getSubsAll())
     },[dispatch])
 
+    // const assinatura = assinantes.map()
     return (
         <>
-        <h1>{JSON.stringify(assinantes)}</h1>
         <Table>
             <thead>
                 <tr>
@@ -35,27 +40,27 @@ const Assinantes = () => {
                         <th scope="row">{assinantes.id}</th>
                         <td>{assinantes.name}</td>
                         <td>{assinantes.email}</td>
-                        <td><BiListPlus style={{ cursor: 'pointer' }} size="25px" onClick={toggle}/></td>
+                        <td><BiListPlus style={{ cursor: 'pointer' }} size="25px" onClick={() => toggle(assinantes)}/></td>
                     </tr>
                 ))}
             </tbody>
         </Table>
 
-        <Modal isOpen={modal} toggle={toggle}>
+        <Modal isOpen={modal.status} toggle={toggle}>
             <ModalHeader toggle={toggle}>Lista de Assinaturas</ModalHeader>
             <ModalBody>
                 <Table>
                     <thead>
                         <tr>
-                            <th>Assinaturas</th>
+                            <th>Caixas Assinadas</th>
+                            <th>ID</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {assinantes?.map((assinantes, i)=> (
+                        {modal?.data?.assinatura?.map((v, i)=> (
                             <tr key={i}>
-                                <th scope="row">{assinantes.id}</th>
-                                <td>{assinantes.name}</td>
-                                <td>{assinantes.email}</td>
+                                <td>{v.caixa}</td>
+                                <td>{v.id}</td>
                             </tr>
                         ))}
                     </tbody>

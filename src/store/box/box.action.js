@@ -26,7 +26,7 @@ export const getBoxDetalhe = (id) => {
     return async (dispatch) => {
         try {
             const res =  await getServiceBoxDetalhe(id);
-            res.data.registered = res.data.assinantes.length > 0;
+            // res.data.registered = res.data.assinantes.length > 0;
             dispatch({
                 type: TYPES.BOXE_DETALHE,
                 data: res.data

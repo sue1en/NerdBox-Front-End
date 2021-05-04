@@ -46,7 +46,7 @@ const Routers = () => {
                <Route exact path='/' component={Home}/>
                <Route exact path='/signin' component={SignIn}/>
                <Route exact path='/signup' component={SignUp}/>
-               <Route exact path='/boxes/:id' component={BoxesPage}/>
+               <AdminRoute exact path='/boxes/:id' component={BoxesPage}/>
                <Route exact path='/sobre' component={Sobre}/>
                
                {/* LOGIN REQUIRED */}

@@ -44,65 +44,79 @@ const Profile = (id) => {
 
 
     return (
-        <>
-        <ProfileUpdate>
-            <BoxInscricao>
-                <Col xs="12" sm="12" md="8" lg="8">
-                    <FormGroup>
-                        <Label for="name">Nome</Label>
-                        <Input type="text" id="name" value={form.name || ""} onChange={handleChange}
-                            name="name" placeholder="Insira seu nome"/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="email">Email</Label>
-                        <Input type="email"id="email" value={form.email || ""} onChange={handleChange}
-                            name="email" placeholder="Insira seu email" className="text-lowercase" />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="email">Data Nascimento</Label>
-                        <Input type="date" id="birth_date" value={form.birth_date || ""} onChange={handleChange}
-                            name="birth_date" />
-                    </FormGroup>
-                    <FormGroup>
-                        <Button color="primary" onClick={updateForm}>Atualizar Dados</Button>
-                    </FormGroup>
-                </Col>
-            </BoxInscricao>
-            <Table>
-                    <thead>
-                        <tr>
-                            <th>Caixas Assinadas</th>
-                            <th>ID</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {assinantes?.assinaturas?.map((item, i) => (
-                            <tr key={i}>
-                                <td>{item.caixa}</td>
-                                <td>{item.id}</td>
+        <Container>
+            <ProfileUpdate>
+                    <Col xs="12" sm="12" md="8" lg="8">
+                        <FormGroup>
+                            <Label for="name">Nome</Label>
+                            <Input type="text" id="name" value={form.name || ""} onChange={handleChange}
+                                name="name" placeholder="Insira seu nome"/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="email">Email</Label>
+                            <Input type="email"id="email" value={form.email || ""} onChange={handleChange}
+                                name="email" placeholder="Insira seu email" className="text-lowercase" />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="email">Data Nascimento</Label>
+                            <Input type="date" id="birth_date" value={form.birth_date || ""} onChange={handleChange}
+                                name="birth_date" />
+                        </FormGroup>
+                        <FormGroup>
+                            <Button color="info" onClick={updateForm}>Atualizar Dados</Button>
+                        </FormGroup>
+                    </Col>
+            </ProfileUpdate>
+            <CointainerTable>
+                <Table>
+                        <thead>
+                            <tr>
+                                <th>Caixas Assinadas</th>
+                                <th>ID</th>
                             </tr>
-                            
-                        ))}
-                    </tbody>
+                            </thead>
+                            <tbody>
+                                {assinantes?.assinaturas?.map((item, i) => (
+                                    <tr key={i}>
+                                        <td>{item.caixa}</td>
+                                        <td>{item.id}</td>
+                                    </tr>    
+                                ))}
+                            </tbody>
                 </Table>
-        </ProfileUpdate>
-        </>
+            </CointainerTable>
+        </Container>
     )
 }
 
 export default Profile;
 
-const BoxInscricao = styled(Row)`
-    width: 600px;
-    height: 40px;
-    margin-left: 200px;
+const BoxInscricao = styled.div`
+    /* width: 600px; */
+    /* height: 40px; */
+    /* margin-left: 200px; */
 `
 const ProfileUpdate = styled.div`
     display:flex;
     justify-content: center;
+    align-items: center;
     font-family: 'Roboto', sans-serif;
     font-size:22px;
     margin-bottom: 10px;
     font-weight:500;
-    padding: 5px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    width: 50%;
+`
+const Container =  styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    min-width: 100%;
+`
+const CointainerTable = styled.div`
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    width: 50%;
 `

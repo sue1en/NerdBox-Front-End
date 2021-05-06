@@ -1,4 +1,5 @@
 import { TYPES } from './auth.action'
+import { TYPES as TYPES_SUBS } from '../assinante/assinante.action'
 import { getToken, getUser } from '../../config/auth';
 const INITIAL_STATE = {
     admin: getUser().type === '1' || false,
@@ -33,6 +34,11 @@ const reducer = (state = INITIAL_STATE, action) => {
             state.admin = false
             state.error = []
             return state
+        case TYPES_SUBS.USER_PROFILE:
+            state.usuario = { ...action.data }
+            state.admin = false
+            state.error = []
+            return state;
         case TYPES.SIGN_ERROR: // disponibiliza na mesa
             const err = [...state.error, action.data]
             state.loading = false

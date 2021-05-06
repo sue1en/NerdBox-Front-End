@@ -1,14 +1,19 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button, Row, Col, FormGroup, Label, Input } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from "styled-components";
-import { updateProfileService } from '../services/auth.service'
+import { Table } from 'reactstrap';
+import { getSubsId, updateProfile } from '../store/assinante/assinante.action';
 
 const Profile = (id) => {
     document.title = "NerdBox - Perfil"
     const dispatch = useDispatch()
     const perfil = useSelector(state => state.auth.usuario)
+
+    const assinantes = useSelector(state => state.subs.all)
+
     const [form, setForm] = useState({ ...perfil })
+    
 
     const handleChange = (e) => {
         setForm({
@@ -16,6 +21,10 @@ const Profile = (id) => {
             [e.target.name]: e.target.value
         })
     }
+
+    useEffect(() => {
+        dispatch(getSubsId())
+    },[dispatch])
 
     const formatDate = (birth_date) => {
         const [y, m, d] = birth_date.split('-')
@@ -25,26 +34,24 @@ const Profile = (id) => {
     const updateForm = () => {
         const nform = {
             ...form,
-            name: form.name.toUpperCase(),
+            name: form.name,
             email: form.email.toLowerCase(),
-            birth_date: formatDate(form.birth_date)
+            birth_date: formatDate(form.birth_date),
         }
-       dispatch(updateProfileService(perfil.id, nform))
+        delete nform.type
+       dispatch(updateProfile(nform))
     }
 
 
     return (
         <>
-         <h2>{perfil.name}</h2>
-         <h2>{perfil.email}</h2>
-         <h2>{perfil.id}</h2>
         <ProfileUpdate>
             <BoxInscricao>
                 <Col xs="12" sm="12" md="8" lg="8">
                     <FormGroup>
                         <Label for="name">Nome</Label>
                         <Input type="text" id="name" value={form.name || ""} onChange={handleChange}
-                            name="nome" placeholder="Insira seu nome" className="text-uppercase" />
+                            name="name" placeholder="Insira seu nome"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="email">Email</Label>
@@ -61,9 +68,24 @@ const Profile = (id) => {
                     </FormGroup>
                 </Col>
             </BoxInscricao>
-           
+            <Table>
+                    <thead>
+                        <tr>
+                            <th>Caixas Assinadas</th>
+                            <th>ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {assinantes?.assinaturas?.map((item, i) => (
+                            <tr key={i}>
+                                <td>{item.caixa}</td>
+                                <td>{item.id}</td>
+                            </tr>
+                            
+                        ))}
+                    </tbody>
+                </Table>
         </ProfileUpdate>
-        
         </>
     )
 }

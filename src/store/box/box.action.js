@@ -23,10 +23,11 @@ export const getBoxAll = () => {
     }
 }
 export const getBoxDetalhe = (id) => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         try {
+            const { auth } = getState()
             const res =  await getServiceBoxDetalhe(id);
-            // res.data.registered = res.data.assinantes.length > 0;
+            res.data.registered = res.data.assinantes.some(item => item.member.email === auth.usuario.email)
             dispatch({
                 type: TYPES.BOXE_DETALHE,
                 data: res.data

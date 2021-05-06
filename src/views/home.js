@@ -6,7 +6,7 @@ import styled from 'styled-components'
 //______ COMPONENTES______
 import Banner from '../components/banner';
 import ProductBoxes from '../components/boxes';
-import MemberReviews from '../components/coments';
+import EquipeComents from '../components/coments';
 import LoadingComponent from '../components/loading';
 import { getBoxAll } from '../store/box/box.action';
 
@@ -43,7 +43,7 @@ const Home = () => {
          </Row>
          </BoxesContainer >
          <ReviewsContainer>
-            <MemberReviews/>
+            <EquipeComents/>
          </ReviewsContainer>
       </div>
    );

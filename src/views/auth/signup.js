@@ -15,7 +15,6 @@ const SignUp = (data) => {
         email: "",
         password: "",
         birth_date: ""
-
     });
 
     

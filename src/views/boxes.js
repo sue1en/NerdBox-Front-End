@@ -26,11 +26,11 @@ const BoxesPage = (props) => {
    const isAdmin = useSelector(state => state.auth.admin)
    const detalhes = useSelector(state => state.boxes.detalhes)
    const assinaturas = useSelector(state => state.boxes.detalhes.assinantes)
-   const member = useSelector(state => state.boxes.detalhes.member)
+   const registered = useSelector(state => state.boxes.detalhes.registered)
 
-   const toogleSubcription = (assinaturas) => {
-      if(member) {
-         dispatch(removeSubscription(id, assinaturas[0].id))
+   const toogleSubcription = () => {
+      if(registered) {
+         dispatch(removeSubscription(id, detalhes.assinantes[0].id))
          .then(() => {
             Swal.fire({
                 icon: 'success',
@@ -67,7 +67,7 @@ const BoxesPage = (props) => {
             <img src={ImgBox} width="60%" alt='foto demosntrativa da box'/>
             <p>{detalhes.description || ''}</p>
          </div>
-         <Button onClick={() => toogleSubcription(assinaturas)} color={!member ? "primary" : "danger"} size="sm">{!member ?(<><AiFillCheckSquare /> Quero Assinar </>) :(<><AiFillCloseSquare /> Cancelar</>) }</Button>
+         <Button onClick={() => toogleSubcription(assinaturas)} color={!registered ? "primary" : "danger"} size="sm">{!registered ?(<><AiFillCheckSquare /> Quero Assinar </>) :(<><AiFillCloseSquare /> Cancelar</>) }</Button>
       </Produto>
    )};
 

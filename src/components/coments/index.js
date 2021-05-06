@@ -7,15 +7,16 @@ import "slick-carousel/slick/slick-theme.css";
 
 //IMAGES________
 import ReviewFoto from '../../assets/images/review-foto.png'
+import felipeIMG from '../../assets/images/felipe.jpg';
 
-const MemberReviews = () => {
+const EquipeComents = () => {
 
    const settings = {
       dots: true,
       infinite: true,
       speed: 600,
-      slidesToShow: 2,
-      slidesToScroll: 2,
+      slidesToShow: 1,
+      slidesToScroll: 1,
       initialSlide: 1,
       responsive: [
          {
@@ -34,9 +35,9 @@ const MemberReviews = () => {
          <Slider { ...settings }>     
             <SliderItem>
                <Card>
-                  <img src={ReviewFoto}/>
+                  <img src={felipeIMG}/>
                   <div>
-                     <h3>Nome do fulano</h3>
+                     <h3>Felipe Siqueira</h3>
                      <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
                   </div>
                </Card>
@@ -45,7 +46,7 @@ const MemberReviews = () => {
                <Card>
                   <img src={ReviewFoto}/>
                   <div>
-                     <h3>Nome do fulano</h3>
+                     <h3>Suelen Batista</h3>
                      <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
                   </div>
                </Card>
@@ -64,7 +65,7 @@ const MemberReviews = () => {
    );
 };
 
-export default MemberReviews;
+export default EquipeComents;
 
 const ReviewsContainer = styled.div`
    

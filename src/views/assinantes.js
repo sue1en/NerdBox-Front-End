@@ -23,7 +23,6 @@ const Assinantes = () => {
         dispatch(getSubsAll())
     },[dispatch])
 
-    // const assinatura = assinantes.map()
     return (
         <>
         <Table>
@@ -57,7 +56,7 @@ const Assinantes = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {modal?.data?.assinatura?.map((v, i)=> (
+                        {modal?.data?.assinaturas?.map((v, i)=> (
                             <tr key={i}>
                                 <td>{v.caixa}</td>
                                 <td>{v.id}</td>

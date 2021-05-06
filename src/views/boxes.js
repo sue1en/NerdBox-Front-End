@@ -65,12 +65,13 @@ const BoxesPage = (props) => {
          <h2>{detalhes.name || ''}</h2>
          <div>
             <img src={ImgBox} width="60%" alt='foto demosntrativa da box'/>
-            <p>{detalhes.description || ''}</p>
+            <div>
+               <p>{detalhes.description || ''}</p>
+               <Button block onClick={() => toogleSubcription(assinaturas)} color={!registered ? "info" : "danger"} size="sm">{!registered ?(<><AiFillCheckSquare/> Quero Assinar</>) :(<><AiFillCloseSquare/> Cancelar Assinatura</>) }</Button>
+            </div>
          </div>
-         <Button onClick={() => toogleSubcription(assinaturas)} color={!registered ? "primary" : "danger"} size="sm">{!registered ?(<><AiFillCheckSquare /> Quero Assinar </>) :(<><AiFillCloseSquare /> Cancelar</>) }</Button>
       </Produto>
    )};
-
    
    const montarTela = (detalhes) => (
       <div>
@@ -83,7 +84,6 @@ const BoxesPage = (props) => {
       loading 
          ? <LoadingComponent/> 
          : montarTela(detalhes)
-      
    );
 };
 
@@ -102,10 +102,18 @@ const Produto = styled.div`
       img{
          border-radius:10px;
       }
-      p{
-         margin:0 40px;
+      div{
+         flex-direction:column;
+         justify-content:space-between;
+         width:100%;
+         margin:0 0 0 20px;
+         p{
+            text-indent:15px;
+            margin:0 0 10px 0;
+         }
       }
    }
+
    @media(max-width: 800px) {
       margin:20px;
       h2{
@@ -114,8 +122,11 @@ const Produto = styled.div`
       div{
          flex-direction:column;
          align-items:center;
-         p{
-            margin:0 10px;
+         div{
+            margin:10px;
+            p{
+               margin:20px;
+            }
          }
       }
   }

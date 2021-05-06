@@ -66,21 +66,21 @@ const Header = (props)=>{
                         </NavItem>
                      ) : ""}
                   </Nav>
+                  {isAuthenticated() ? (
+                     <Nav>
+                     <UncontrolledDropdown nav inNavbar>
+                        <DropdownToggle nav caret  className="text-white">
+                           {usuario.name}
+                        </DropdownToggle>
+                        <DropdownMenu>
+                           <DropdownItem onClick={() => history.push('/profile')}>Perfil</DropdownItem>
+                           <DropdownItem divider />
+                           <DropdownItem onClick={logout}>Sair</DropdownItem>
+                        </DropdownMenu>
+                     </UncontrolledDropdown>
+                     </Nav>
+                  ) : ""}
                </SCollapse>
-               {isAuthenticated() ? (
-                  <Nav>
-                  <UncontrolledDropdown nav inNavbar>
-                     <DropdownToggle nav caret>
-                        {usuario.name}
-                     </DropdownToggle>
-                     <DropdownMenu>
-                        <DropdownItem onClick={() => history.push('/profile')}>Perfil</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem onClick={logout}>Sair</DropdownItem>
-                     </DropdownMenu>
-                  </UncontrolledDropdown>
-                  </Nav>
-               ) : ""}
             </SNavbar>
          </Container>    
       </SHeader>

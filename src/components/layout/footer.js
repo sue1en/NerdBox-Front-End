@@ -4,7 +4,7 @@ import {
     NavLink,
 } from 'reactstrap';
 import { AiOutlineFacebook, AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
-import LogoFooter from '../../assets/images/logos/LOGO-pb.svg';
+import LogoFooter from '../../assets/images/logos/logo-pb.svg';
 
 const Footer = () => (
         <SFooter>
@@ -44,6 +44,8 @@ const SocialMidias = styled.div`
 const SNavLink = styled(NavLink)`
     color:#f6f6f6;
     padding:5px 10px;
+    display:flex;
+    align-items:center;
     svg{
         margin-right:5px;
     }

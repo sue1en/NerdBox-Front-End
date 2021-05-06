@@ -61,7 +61,7 @@ const SignIn = (data) => {
                         <Input disabled={loading} type="password" id="password" name="password" value={form.password || ""} onChange={handlerChangeNew} placeholder="Insira sua Senha"/>
                     </FormGroup>
                     <FormGroup>
-                        <Button color={isNotValid() || loading ? 'secondary' : 'primary'} disabled={isNotValid()} size="md" block onClick={submitForm}>
+                        <Button color={isNotValid() || loading ? 'secondary' : 'info'} disabled={isNotValid()} size="md" block onClick={submitForm}>
                             {loading ? (<><Spinner size="sm" color="light" /> Carregando...</>) : "Enviar"}
                         </Button>
                     </FormGroup>

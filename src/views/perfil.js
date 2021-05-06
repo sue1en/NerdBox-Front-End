@@ -45,6 +45,9 @@ const Profile = (id) => {
 
     return (
         <Container>
+            <p>{perfil.name}</p>
+            <p>{perfil.email}</p>
+            <p>{perfil.birth_date}</p>
             <ProfileUpdate>
                     <Col xs="12" sm="12" md="8" lg="8">
                         <FormGroup>

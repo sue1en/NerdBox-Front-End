@@ -34,7 +34,7 @@ const BoxesPage = (props) => {
          .then(() => {
             Swal.fire({
                 icon: 'success',
-                title: `Aluno Removido do Curso`,
+                title: `Assinatura removida.`,
                 showConfirmButton: false,
                 showCloseButton: true,
             })
@@ -45,7 +45,7 @@ const BoxesPage = (props) => {
              .then(() => {
                  Swal.fire({
                      icon: 'success',
-                     title: `Aluno Cadastrado com sucesso !`,
+                     title: `Caixa assinada com sucesso!`,
                      showConfirmButton: false,
                      showCloseButton: true,
                  })

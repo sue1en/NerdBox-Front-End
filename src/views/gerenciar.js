@@ -35,8 +35,12 @@ const Gerenciar = (props) => {
   const stateForm = useState({})
   const [form, setForm] = stateForm
 
+  const [collapsed, setCollapsed] = useState(true);
 
-  const toggle = () => setModal(!modal);
+  const toggleNavbar = () => setCollapsed(!collapsed);
+
+
+  const toggleModal = () => setModal(!modal);
 
   const usuario = useSelector((state) => state.auth.usuario);
 
@@ -53,7 +57,7 @@ const Gerenciar = (props) => {
    dispatch(createBox(form))
       .then(() => {
         setForm({});
-        toggle();
+        toggleModal();
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -76,8 +80,8 @@ const Gerenciar = (props) => {
     <>
     <Navbar color="light" light expand="md">
         <NavbarBrand>Painel do Administrador</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={modal} navbar>
+        <NavbarToggler onClick={toggleNavbar} />
+        <Collapse isOpen={!collapsed} navbar>
           <Nav className="mr-auto" navbar>
             {/* <NavItem>
               <Button style={{ cursor: "pointer" }} onClick={toggle}  size="20px"color="primary">Cadastrar uma Nova Caixa </Button>
@@ -87,7 +91,7 @@ const Gerenciar = (props) => {
                 <BiWrench /> Gerenciar
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem onClick={toggle}>
+                <DropdownItem onClick={toggleModal}>
                   <BiPlus/> Adicionar Caixa
                 </DropdownItem>
                 <DropdownItem >
@@ -105,14 +109,14 @@ const Gerenciar = (props) => {
         {!loading && boxes.length === 0 ? "Nâo tem Caixas disponiveis" : MapBoxes(boxes)}
       </Row>
       {/* MODAL */}
-      <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Criar uma nova caixa</ModalHeader>
+      <Modal isOpen={modal} toggle={toggleModal}>
+        <ModalHeader toggle={toggleModal}>Criar uma nova caixa</ModalHeader>
         <ModalBody>
           <FormBox state={stateForm}/>
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={submitForm}>Enviar</Button>{' '}
-          <Button color="secondary" onClick={toggle}>Cancelar</Button>
+          <Button color="secondary" onClick={toggleModal}>Cancelar</Button>
         </ModalFooter>
       </Modal>
     </BoxesContainer >

@@ -28,7 +28,7 @@ const SFooter = styled.footer`
     display:flex;
     justify-content:space-between;
     align-items:center;
-    @media(max-width: 500px) {
+    @media(max-width: 700px) {
         flex-direction:column;
         align-items:center;
     }
@@ -67,7 +67,7 @@ const BrandLogo = styled.div`
         color:#f6f6f6;
         margin:5px 0 5px 5px;
     }
-    @media(max-width: 500px) {
+    @media(max-width: 700px) {
         align-items:center;
         padding:15px;
     }

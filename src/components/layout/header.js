@@ -68,16 +68,16 @@ const Header = (props)=>{
                   </Nav>
                   {isAuthenticated() ? (
                      <Nav>
-                     <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle nav caret  className="text-white">
-                           {usuario.name}
-                        </DropdownToggle>
-                        <DropdownMenu>
-                           <DropdownItem onClick={() => history.push('/profile')}>Perfil</DropdownItem>
-                           <DropdownItem divider />
-                           <DropdownItem onClick={logout}>Sair</DropdownItem>
-                        </DropdownMenu>
-                     </UncontrolledDropdown>
+                        <UncontrolledDropdown nav inNavbar>
+                           <DropdownToggle nav caret  className="text-white">
+                              {usuario.name}
+                           </DropdownToggle>
+                           <DropdownMenu>
+                              <DropdownItem onClick={() => history.push('/profile')}>Perfil</DropdownItem>
+                              <DropdownItem divider />
+                              <DropdownItem onClick={logout}>Sair</DropdownItem>
+                           </DropdownMenu>
+                        </UncontrolledDropdown>
                      </Nav>
                   ) : ""}
                </SCollapse>
@@ -94,13 +94,13 @@ const SHeader = styled.header`
 `
 const SNavbar = styled(Navbar)`
    background-color:#5C22B3;
-   padding:5px 50px;
+   padding:0 50px;
    display:flex;
    justify-content:space-between;
 `
 
 const SNavbarBrand = styled(NavbarBrand)` 
-   margin:0;
+   margin:5px 0;
    padding:0;
    img{
       width: 180px; 
@@ -108,12 +108,21 @@ const SNavbarBrand = styled(NavbarBrand)`
    }
 `
 const SCollapse = styled(Collapse)`
-    flex-grow: 0;
+   flex-grow: 0;
+   ul {
+      :nth-child(2) { 
+         padding:6px 0 !important;
+         font-size:18px;
+         :hover{
+            background-color:#491C8D;
+         }
+      }
+   }
 `
 const SNavLink = styled(NavLink)`
    color:#f6f6f6 !important; 
    font-size:18px;
-   padding:5px 10px !important;
+   padding:14px 10px !important;
    margin:0 5px; 
    :hover{
       background-color:#491C8D;

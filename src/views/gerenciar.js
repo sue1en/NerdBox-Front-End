@@ -78,7 +78,7 @@ const Gerenciar = (props) => {
 
   return (
     <>
-    <Navbar color="light" light expand="md">
+      <SNavbar color="light" light expand="md">
         <NavbarBrand>Painel do Administrador</NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} />
         <Collapse isOpen={!collapsed} navbar>
@@ -102,9 +102,8 @@ const Gerenciar = (props) => {
           </Nav>
           <NavbarText>{`Administrador: ${usuario.name}`}</NavbarText>
         </Collapse>
-      </Navbar>
+      </SNavbar>
     <BoxesContainer>
-      
       <Row>
         {!loading && boxes.length === 0 ? "Nâo tem Caixas disponiveis" : MapBoxes(boxes)}
       </Row>
@@ -115,7 +114,7 @@ const Gerenciar = (props) => {
           <FormBox state={stateForm}/>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={submitForm}>Enviar</Button>{' '}
+          <Button color="info" onClick={submitForm}>Enviar</Button>{' '}
           <Button color="secondary" onClick={toggleModal}>Cancelar</Button>
         </ModalFooter>
       </Modal>
@@ -136,4 +135,7 @@ const BoxesContainer = styled.div`
    }
    @media(max-width: 500px) {
    }
+`
+const SNavbar = styled(Navbar)`
+  padding:5px 50px;
 `

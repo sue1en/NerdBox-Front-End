@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 //IMAGES________
 import ReviewFoto from '../../assets/images/review-foto.png'
 import felipeIMG from '../../assets/images/felipe.jpg';
+import suelenIMG from '../../assets/images/suelen.jpg';
 
 const EquipeComents = () => {
 
@@ -44,7 +45,7 @@ const EquipeComents = () => {
             </SliderItem>
             <SliderItem>
                <Card>
-                  <img src={ReviewFoto}/>
+                  <img src={suelenIMG}/>
                   <div>
                      <h3>Suelen Batista</h3>
                      <p>um texto vai aqui, vai aqui um texto qualquer tambem para preencher o conteúdo.</p>
@@ -81,6 +82,7 @@ const Card = styled.div`
    display:flex;
    align-items:center;
    margin:15px 60px;
+   /* min-width:395px; */
    img{
       width:135px;
       height:auto;
@@ -100,14 +102,12 @@ const Card = styled.div`
       }
    }
 
-   @media(max-width: 600px) {
-      margin:15px 25px;
+   @media(max-width: 720px) {
+      margin:15px 100px;
       flex-direction:column;
       align-items:center;
       img{
-         border-radius: 10px 10px 0 0;
-         width:fit-content;
-         height:auto;
+         border-radius:0;
 
       }
       div{

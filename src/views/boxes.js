@@ -114,7 +114,7 @@ const Produto = styled.div`
       }
    }
 
-   @media(max-width: 800px) {
+   @media(max-width: 700px) {
       margin:20px;
       h2{
          text-align:center;

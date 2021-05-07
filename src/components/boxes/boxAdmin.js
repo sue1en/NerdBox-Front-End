@@ -77,7 +77,7 @@ const submitForm= () => {
             <SCardBody>
                 <h5>{name}</h5>
                 <h6>R$ {price}</h6>
-                <h6>Numero de assinantes:{qtd_subs}</h6>
+                <h6>Numero de assinantes: {qtd_subs}</h6>
                 <BiEdit style={{ cursor: "pointer" }} className="text-info mr-1 font-weight-normal" size="25px" onClick={() => editBox(id) } />
                 <BiTrash style={{ cursor: "pointer" }} className="text-danger font-weight-normal" size="25px" onClick={() => deleteBox(id, name)} /> 
             </SCardBody>
@@ -91,7 +91,7 @@ const submitForm= () => {
                 <FormBox state={stateForm}/>
             </ModalBody>
         <ModalFooter>
-            <Button color="primary" onClick={submitForm}>Enviar</Button>{' '}
+            <Button color="info" onClick={submitForm}>Enviar</Button>{' '}
             <Button color="secondary" onClick={toggle}>Cancelar</Button>
         </ModalFooter>
         </Modal>

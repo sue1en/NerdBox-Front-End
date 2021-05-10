@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "repository": "https://gitlab.com/suelen.batista/bootcamp-project-02-app.git",
-  "author": "Suelen Batista <suelen.batista@al.infnet.edu.br>",
+  "author": "Felipe Siqueira <felipe.msiqueira@al.infnet.edu.br> Suelen Batista <suelen.batista@al.infnet.edu.br>",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

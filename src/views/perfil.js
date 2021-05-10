@@ -45,11 +45,15 @@ const Profile = (id) => {
 
     return (
         <Container>
-            <p>{perfil.name}</p>
-            <p>{perfil.email}</p>
-            <p>{perfil.birth_date}</p>
+            <MemberInfo>
+                <h4>Seu Perfil</h4>
+                <p><strong>Nome:</strong> {perfil.name}</p>
+                <p><strong>Email:</strong> {perfil.email}</p>
+                <p><strong>Nascimento:</strong> {formatDate(perfil.birth_date)}</p>
+            </MemberInfo>
             <ProfileUpdate>
                     <Col xs="12" sm="12" md="8" lg="8">
+                        <h4>Editar Dados</h4>
                         <FormGroup>
                             <Label for="name">Nome</Label>
                             <Input type="text" id="name" value={form.name || ""} onChange={handleChange}
@@ -94,10 +98,17 @@ const Profile = (id) => {
 
 export default Profile;
 
-const BoxInscricao = styled.div`
-    /* width: 600px; */
-    /* height: 40px; */
-    /* margin-left: 200px; */
+const MemberInfo = styled.div`
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    width: 50%;
+    font-size:18px;
+    font-family: 'Roboto', sans-serif;
+    p{
+        padding:0;
+        margin:5px;
+    }
 `
 const ProfileUpdate = styled.div`
     display:flex;
@@ -118,8 +129,10 @@ const Container =  styled.div`
     align-items: center;
     min-height: 100%;
     min-width: 100%;
+    color:#575757;
 `
 const CointainerTable = styled.div`
+    color:#575757;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     width: 50%;
 `

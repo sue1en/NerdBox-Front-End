@@ -4,7 +4,7 @@ import {
     NavLink,
 } from 'reactstrap';
 import { AiOutlineFacebook, AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
-import LogoFooter from '../../assets/images/logos/LOGO-pb.svg';
+import LogoFooter from '../../assets/images/logos/logo-pb.svg';
 
 const Footer = () => (
         <SFooter>
@@ -28,7 +28,7 @@ const SFooter = styled.footer`
     display:flex;
     justify-content:space-between;
     align-items:center;
-    @media(max-width: 500px) {
+    @media(max-width: 700px) {
         flex-direction:column;
         align-items:center;
     }
@@ -44,6 +44,8 @@ const SocialMidias = styled.div`
 const SNavLink = styled(NavLink)`
     color:#f6f6f6;
     padding:5px 10px;
+    display:flex;
+    align-items:center;
     svg{
         margin-right:5px;
     }
@@ -65,7 +67,7 @@ const BrandLogo = styled.div`
         color:#f6f6f6;
         margin:5px 0 5px 5px;
     }
-    @media(max-width: 500px) {
+    @media(max-width: 700px) {
         align-items:center;
         padding:15px;
     }

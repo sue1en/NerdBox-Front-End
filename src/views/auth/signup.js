@@ -69,7 +69,7 @@ const SignUp = (data) => {
             </Alert>
 
             <Alert color="danger" isOpen={visible} toggle={closeError}>
-                <div><strong>OPS! </strong> Aconteceu um erro.</div>
+                <div><strong>OPS!</strong> Aconteceu um erro.</div>
                 <small>Verifique usuário e senha</small>
             </Alert>
             <Card>
@@ -92,7 +92,7 @@ const SignUp = (data) => {
                         <Input disabled={loading} type="date" id="birth_date" name="birth_date" value={form.birth_date || ""} onChange={handlerChangeNew}/>
                     </FormGroup>
                     <FormGroup>
-                        <Button color={isNotValid() || loading ? 'secondary' : 'primary'} disabled={isNotValid()} size="md" block onClick={submitForm}>
+                        <Button color={isNotValid() || loading ? 'secondary' : 'info'} disabled={isNotValid()} size="md" block onClick={submitForm}>
                             {loading ? (<><Spinner size="sm" color="light" /> Carregando...</>) : "Enviar"}
                         </Button>
                     </FormGroup>

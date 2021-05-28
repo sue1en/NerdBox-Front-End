@@ -10,7 +10,6 @@ import EquipeComents from '../components/coments';
 import LoadingComponent from '../components/loading';
 import { getBoxAll } from '../store/box/box.action';
 
-
 const Home = () => {
    const dispatch = useDispatch()
    document.title = "Nerdbox - Home"

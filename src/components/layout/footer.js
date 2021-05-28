@@ -4,7 +4,7 @@ import {
     NavLink,
 } from 'reactstrap';
 import { AiOutlineFacebook, AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
-import LogoFooter from '../../assets/images/logos/logo-pb.svg';
+import LogoFooter from '../../assets/images/logos/LOGO-pb.svg';
 
 const Footer = () => (
         <SFooter>

@@ -10,3 +10,5 @@
 Desenvolvedores:
 - Felipe Siqueira [GitHub](https://github.com/fsiq-dev)
 - Suelen Batista [GitHub](https://github.com/sue1en)
+
+_____________

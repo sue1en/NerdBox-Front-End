@@ -32,17 +32,9 @@
 
 ## Developers:
 - Felipe Siqueira [GitHub](https://github.com/fsiq-dev)
-<<<<<<< HEAD
-- Suelen Batista [GitHub](https://github.com/sue1en)
-=======
 - Suelen Batista [GitHub](https://github.com/sue1en)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-_____________
-=======
-=======
->>>>>>> master
+
 ## How to Run:
 ```console
 $ yarn install      # install dependencies
@@ -65,4 +57,3 @@ $ yarn start        # start server
   - Demo:
   
 <!--     <img src="#" width="350" alt="Demo web page mobile"/>   -->
->>>>>>> 05a649e1473616612506664aa5b66a5d714caae0

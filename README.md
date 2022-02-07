@@ -32,11 +32,17 @@
 
 ## Developers:
 - Felipe Siqueira [GitHub](https://github.com/fsiq-dev)
+<<<<<<< HEAD
+- Suelen Batista [GitHub](https://github.com/sue1en)
+=======
 - Suelen Batista [GitHub](https://github.com/sue1en)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 _____________
 =======
+=======
+>>>>>>> master
 ## How to Run:
 ```console
 $ yarn install      # install dependencies

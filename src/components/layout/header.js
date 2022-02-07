@@ -91,6 +91,9 @@ export default Header;
 
 const SHeader = styled.header`
    padding:27px;
+   @media(max-width: 765px) {
+      padding:22px;
+   }
 `
 const SNavbar = styled(Navbar)`
    background-color:#5C22B3;

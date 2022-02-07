@@ -103,19 +103,15 @@ const Card = styled.div`
    }
 
    @media(max-width: 720px) {
-      margin:15px 100px;
+      margin:15px;
+      min-width:215px;
       flex-direction:column;
       align-items:center;
       img{
          border-radius:0;
-
       }
       div{
          width:auto;
-         h3{
-         }
-         p{
-         }
       }
    }
 `
